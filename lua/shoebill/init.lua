@@ -1,27 +1,28 @@
-local g = vim.g
-local highlight = vim.api.nvim_set_hl
+local g           = vim.g
+local highlight   = vim.api.nvim_set_hl
 
-local none = "NONE"
-local bg = "#FFFFFF"
-local fg = "#c3ccdc"
+local none        = "NONE"
+local bg          = '#222222'
+local fg          = '#999999'
+local red         = '#ed6a5a'
+local green       = '#90A959'
+local yellow      = '#efcb68'
+local blue        = '#669bbc'
+local magenta     = '#8e9aaf'
+local cyan        = '#99aaaa'
+local dark_black  = "#000000"
+local light_black = "#777777"
+local black       = bg
+local white       = fg
+>>>>>>> a35dad7 (aaa)
 
-local black = bg
-local white = fg
-local red = "#ee6352"
-local yellow = "#ee964b"
-local green = "#709255"
-local blue = "#7ea3cc"
-local cyan = "#36494e"
-local magenta = "#8d80ad"
-local dark_black = "#000000"
-local light_black = "#44444"
+local M           = {}
 
-local M = {}
-
-M.palette = {
+M.palette         = {
         black       = bg,
         white       = fg,
         bg          = bg,
+        fg          = fg,
         red         = red,
         yellow      = yellow,
         green       = green,
@@ -32,35 +33,32 @@ M.palette = {
         light_black = light_black,
 }
 
-M.style = function()
+M.style           = function()
         -------------------------------------------------------------------------
         -- Custom styling groups
         -------------------------------------------------------------------------
 
-        highlight(0, "CustomVisual", { bg = dark_black })
         highlight(0, "CustomWhite", { fg = fg })
-        highlight(0, "CustomComment", { fg = light_black })
-        highlight(0, "CustomVisual", { bg = dark_black })
-        highlight(0, "CustomKeyword", { fg = magenta })
-        highlight(0, "CustomStatement", { fg = magenta })
-        highlight(0, "CustomSpecial", { fg = cyan })
-        highlight(0, "CustomKeyword", { fg = magenta })
-        highlight(0, "CustomOperator", { fg = white })
-        highlight(0, "CustomNonText", { fg = cyan })
         highlight(0, "CustomLabel", { fg = green })
+        highlight(0, "CustomConstant", { fg = red })
+        highlight(0, "CustomFunction", { fg = blue })
+        highlight(0, "CustomType", { fg = cyan })
+        highlight(0, "CustomSpecial", { fg = cyan })
+        highlight(0, "CustomNonText", { fg = cyan })
+        highlight(0, "CustomStatement", { fg = magenta })
+        highlight(0, "CustomKeyword", { fg = magenta })
         highlight(0, "CustomPreproc", { fg = magenta })
         highlight(0, "CustomException", { fg = magenta })
-        highlight(0, "CustomConstant", { fg = red })
-        highlight(0, "CustomType", { fg = cyan })
+        highlight(0, "CustomOperator", { fg = white })
         highlight(0, "CustomIdentifier", { fg = white })
-        highlight(0, "CustomString", { fg = green })
-        highlight(0, "CustomFunction", { fg = blue })
+        highlight(0, "CustomString", { fg = white })
+        highlight(0, "CustomVisual", { bg = dark_black })
+        highlight(0, "CustomComment", { fg = light_black })
         highlight(0, "CustomComment", { fg = light_black })
 
         -------------------------------------------------------------------------
         -- Standard styling
         -------------------------------------------------------------------------
-
 
         -- Specify the colors used by the inbuilt terminal
         if g.nightflyTerminalColors then
@@ -107,7 +105,7 @@ M.style = function()
         highlight(0, "Title", { fg = "#FFFFFF" })
 
         -- const, static
-        highlight(0, "StorageClass", { link = "CustomConstant" })
+        highlight(0, "StorageClass", { link = "CustomType" })
 
         -- void, intptr_t
         highlight(0, "Type", { link = "CustomType" })
@@ -139,7 +137,7 @@ M.style = function()
         -- Search
         highlight(0, "Search", { bg = green, fg = fg })
         highlight(0, "CurSearch", { bg = blue, fg = bg })
-        highlight(0, "IncSearch", { bg = red, fg = bg })
+        highlight(0, "IncSearch", { bg = yellow, fg = bg })
 
         -- '\n' sequences
         highlight(0, "Special", { link = "CustomSpecial" })
@@ -150,17 +148,19 @@ M.style = function()
         -- struct, union, enum, typedef
         highlight(0, "Structure", { link = "CustomKeyword" })
 
+        -- `({,.` 
+        highlight(0, "Delimiter", { fg = white })
+
         -- Status, split and tab lines
         -- todo
-        highlight(0, "StatusLine", { bg = blue, fg = fg })
-        highlight(0, "StatusLineNC", { bg = blue, fg = blue })
-        highlight(0, "StatusLineTerm", { bg = blue, fg = fg })
-        highlight(0, "StatusLineTermNC", { bg = blue, fg = blue })
-        highlight(0, "Tabline", { bg = blue, fg = blue })
-        highlight(0, "TablineSel", { bg = blue, fg = blue })
-        highlight(0, "TablineSelSymbol", { bg = blue, fg = green })
-        highlight(0, "TablineFill", { bg = storm_blue, fg = blue })
-        highlight(0, "VertSplit", { bg = blue, fg = blue })
+        highlight(0, "StatusLine", { bg = bg, fg = fg })
+        highlight(0, "StatusLineNC", { bg = bg, fg = blue })
+        highlight(0, "StatusLineTerm", { bg = bg, fg = fg })
+        highlight(0, "StatusLineTermNC", { bg = bg, fg = blue })
+        highlight(0, "Tabline", { bg = bg, fg = blue })
+        highlight(0, "TablineSel", { bg = bg, fg = blue })
+        highlight(0, "TablineSelSymbol", { bg = bg, fg = green })
+        highlight(0, "TablineFill", { bg = blue, fg = blue })
         highlight(0, "VertSplit", { bg = none, fg = blue })
 
         -- Visual selection
@@ -189,9 +189,9 @@ M.style = function()
         -- Misc
         highlight(0, "Question", { fg = green })
         highlight(0, "MoreMsg", { fg = red })
-        highlight(0, "LineNr", { bg = bg, fg = steel_blue })
-        highlight(0, "Cursor", { fg = bg, bg = blue })
-        highlight(0, "lCursor", { fg = bg, bg = blue })
+        highlight(0, "LineNr", { bg = bg, fg = light_black })
+        highlight(0, "Cursor", { fg = bg, bg = yellow })
+        highlight(0, "lCursor", { fg = bg, bg = yellow })
         highlight(0, "CursorLineNr", { bg = bg, fg = blue })
         highlight(0, "CursorColumn", { bg = bg })
         highlight(0, "CursorLine", { bg = blue })
@@ -201,11 +201,10 @@ M.style = function()
         highlight(0, "SignColumn", { bg = bg, fg = green })
         highlight(0, "Todo", { bg = blue, fg = yellow })
         highlight(0, "SpecialKey", { bg = bg, fg = blue })
-        highlight(0, "MatchParen", { link = "CustomVisual" })
+        highlight(0, "MatchParen", { reverse = true })
         highlight(0, "Ignore", { fg = red })
         highlight(0, "Underlined", { fg = green })
         highlight(0, "QuickFixLine", { bg = dark_black })
-        highlight(0, "Delimiter", { bg = dark_black })
         highlight(0, "qfFileName", { bg = dark_black })
         highlight(0, "qfLineNr", { bg = dark_black })
 
@@ -656,7 +655,7 @@ M.style = function()
         -- lazy.nvim plugin
         highlight(0, "LazyCommit", { link = "CustomEmerald" })
         highlight(0, "LazyCommitType", { link = "CustomViolet" })
-        highlight(0, "LazyDimmed", { fg = grey_blue })
+        highlight(0, "LazyDimmed", { fg = blue })
         highlight(0, "LazyH1", { link = "CustomBlueMode" })
         highlight(0, "LazyProgressDone", { link = "CustomBlue" })
         highlight(0, "LazyProgressTodo", { link = "CustomRegalBlue" })
@@ -666,8 +665,8 @@ M.style = function()
         highlight(0, "LazyReasonRuntime", { link = "CustomTurquoise" })
         highlight(0, "LazyReasonSource", { link = "CustomMalibu" })
         highlight(0, "LazySpecial", { link = "CustomBlue" })
-        highlight(0, "LazyButton", { bg = deep_blue, fg = fg })
-        highlight(0, "LazyButtonActive", { bg = bay_blue, fg = white_blue })
+        highlight(0, "LazyButton", { bg = blue, fg = fg })
+        highlight(0, "LazyButtonActive", { bg = blue, fg = blue })
         if g.nightflyNormalFloat ~= true then
                 highlight(0, "LazyNormal", { bg = blue, fg = fg })
         end
