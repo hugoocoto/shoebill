@@ -2,7 +2,7 @@ local g = vim.g
 local highlight = vim.api.nvim_set_hl
 
 local none = "NONE"
-local bg = "#011627"
+local bg = "#FFFFFF"
 local fg = "#c3ccdc"
 
 local black = bg
