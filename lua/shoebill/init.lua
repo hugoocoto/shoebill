@@ -14,7 +14,6 @@ local dark_black  = "#000000"
 local light_black = "#777777"
 local black       = bg
 local white       = fg
->>>>>>> a35dad7 (aaa)
 
 local M           = {}
 
