@@ -10,7 +10,7 @@ local blue        = '#accfff'
 local magenta     = '#d6d6ff'
 local cyan        = '#dbeaff'
 local fg          = '#f0f0f0'
-local dark_black  = "#000000"
+local dark_black  = "#222731"
 local light_black = "#aaaaaa"
 local black       = bg
 local white       = fg
@@ -60,7 +60,7 @@ M.style = function()
 
         -- Specify the colors used by the inbuilt terminal
         if g.nightflyTerminalColors then
-                g.terminal_color_0 = black
+                g.terminal_color_0 = dark_black
                 g.terminal_color_1 = red
                 g.terminal_color_2 = green
                 g.terminal_color_3 = yellow
@@ -68,7 +68,7 @@ M.style = function()
                 g.terminal_color_5 = magenta
                 g.terminal_color_6 = cyan
                 g.terminal_color_7 = fg
-                g.terminal_color_8 = black
+                g.terminal_color_8 = light_black
                 g.terminal_color_9 = red
                 g.terminal_color_10 = green
                 g.terminal_color_11 = yellow
@@ -98,8 +98,8 @@ M.style = function()
         highlight(0, "Repeat", { link = "CustomKeyword" })        -- for, while
 
         -- Search
-        highlight(0, "Search", { bg = green, fg = fg })
-        highlight(0, "CurSearch", { bg = blue, fg = bg })
+        highlight(0, "Search", { bg = green, fg = bg })
+        highlight(0, "CurSearch", { bg = yellow, fg = bg })
         highlight(0, "IncSearch", { bg = yellow, fg = bg })
 
         highlight(0, "Special", { link = "CustomSpecial" })     -- '\n' sequences
@@ -132,9 +132,9 @@ M.style = function()
         -- Auto-text-completion menu
         highlight(0, "Pmenu", { bg = bg, fg = fg })
         highlight(0, "PmenuSel", { bg = dark_black, fg = fg })
-        highlight(0, "PmenuSbar", { bg = dark_black, fg = fg })
-        highlight(0, "PmenuThumb", { bg = dark_black })
-        highlight(0, "WildMenu", { bg = bg, fg = fg })
+        highlight(0, "PmenuSbar", {})
+        highlight(0, "PmenuThumb", {})
+        highlight(0, "WildMenu", { link = "Pmenu" })
 
         -- Spelling errors
         highlight(0, "SpellBad", { bg = none, underline = true, sp = red })
@@ -148,10 +148,10 @@ M.style = function()
         highlight(0, "LineNr", { bg = bg, fg = light_black })
         highlight(0, "Cursor", { fg = bg, bg = yellow })
         highlight(0, "lCursor", { fg = bg, bg = yellow })
-        highlight(0, "CursorLineNr", { bg = bg, fg = blue })
+        highlight(0, "CursorLineNr", {})
+        highlight(0, "CursorLine", { bg = dark_black })
         highlight(0, "CursorColumn", { bg = bg })
-        highlight(0, "CursorLine", { bg = blue })
-        highlight(0, "CursorLineSign", { bg = blue })
+        highlight(0, "CursorLineSign", {})
         highlight(0, "Folded", { bg = blue, fg = yellow })
         highlight(0, "FoldColumn", { bg = blue, fg = yellow })
         highlight(0, "SignColumn", { bg = bg, fg = green })
@@ -161,8 +161,8 @@ M.style = function()
         highlight(0, "Ignore", { fg = red })
         highlight(0, "Underlined", { fg = green })
         highlight(0, "QuickFixLine", { bg = dark_black })
-        highlight(0, "qfFileName", { bg = dark_black })
-        highlight(0, "qfLineNr", { bg = dark_black })
+        highlight(0, "qfFileName", {})
+        highlight(0, "qfLineNr", {})
 
         -- Color column (after line 80)
         highlight(0, "ColorColumn", { bg = dark_black })
@@ -183,10 +183,10 @@ M.style = function()
         highlight(0, "Whitespace", { fg = blue })
         highlight(0, "TermCursor", { bg = fg, fg = bg })
         highlight(0, "NormalFloat", { bg = bg, fg = blue })
-        highlight(0, "FloatBorder", { bg = bg, fg = blue })
-        highlight(0, "FloatBorder2", { bg = bg, fg = blue })
+        highlight(0, "FloatBorder", {})
+        highlight(0, "FloatBorder2", {})
         highlight(0, "FloatTitle", { bg = blue, fg = fg })
-        highlight(0, "WinBar", { bg = blue, fg = fg })
+        highlight(0, "WinBar", { bg = blue, fg = blue })
         highlight(0, "WinBarNC", { bg = blue, fg = blue })
         highlight(0, "WinSeparator", { bg = fg, fg = bg })
 
@@ -350,27 +350,27 @@ M.style = function()
         highlight(0, "DiagnosticError", { fg = red })
         highlight(0, "DiagnosticWarn", { fg = yellow })
         highlight(0, "DiagnosticInfo", { fg = yellow })
-        highlight(0, "DiagnosticHint", { fg = blue })
+        highlight(0, "DiagnosticHint", { fg = yellow })
         highlight(0, "DiagnosticOk", { fg = green })
         highlight(0, "DiagnosticUnderlineError", { underline = true, sp = red })
         highlight(0, "DiagnosticUnderlineWarn", { underline = true, sp = yellow })
         highlight(0, "DiagnosticUnderlineInfo", { underline = true, sp = yellow })
-        highlight(0, "DiagnosticUnderlineHint", { underline = true, sp = blue })
+        highlight(0, "DiagnosticUnderlineHint", { underline = true, sp = yellow })
         highlight(0, "DiagnosticUnderlineOk", { underline = true, sp = green })
-        highlight(0, "DiagnosticVirtualTextError", { fg = blue })
-        highlight(0, "DiagnosticVirtualTextWarn", { fg = blue })
-        highlight(0, "DiagnosticVirtualTextInfo", { fg = blue })
-        highlight(0, "DiagnosticVirtualTextHint", { fg = blue })
-        highlight(0, "DiagnosticVirtualTextOk", { fg = blue })
+        highlight(0, "DiagnosticVirtualTextError", { fg = red })
+        highlight(0, "DiagnosticVirtualTextWarn", { fg = yellow })
+        highlight(0, "DiagnosticVirtualTextInfo", { fg = yellow })
+        highlight(0, "DiagnosticVirtualTextHint", { fg = yellow })
+        highlight(0, "DiagnosticVirtualTextOk", { fg = green })
         highlight(0, "DiagnosticSignError", { fg = red })
         highlight(0, "DiagnosticSignWarn", { fg = yellow })
         highlight(0, "DiagnosticSignInfo", { fg = yellow })
-        highlight(0, "DiagnosticSignHint", { fg = blue })
+        highlight(0, "DiagnosticSignHint", { fg = yellow })
         highlight(0, "DiagnosticSignOk", { fg = green })
         highlight(0, "DiagnosticFloatingError", { fg = red })
         highlight(0, "DiagnosticFloatingWarn", { fg = yellow })
         highlight(0, "DiagnosticFloatingInfo", { fg = yellow })
-        highlight(0, "DiagnosticFloatingHint", { fg = blue })
+        highlight(0, "DiagnosticFloatingHint", { fg = yellow })
         highlight(0, "DiagnosticFloatingOk", { fg = green })
 
         -- Neovim LSP
@@ -506,37 +506,37 @@ M.style = function()
         --
         -- blink.cmp
         highlight(0, "BlinkCmpDocCursorLine", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKind", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindClass", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindColor", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindConstant", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindConstructor", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindEnum", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindEnumMember", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindEvent", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindField", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindFile", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindFolder", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindFunction", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindInterface", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindKeyword", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindMethod", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindModule", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindOperator", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindProperty", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindReference", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindSnippet", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindStruct", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindText", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindTypeParameter", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindUnit", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindValue", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpKindVariable", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKind", { fg = fg })
+        highlight(0, "BlinkCmpKindClass", { fg = fg })
+        highlight(0, "BlinkCmpKindColor", { fg = fg })
+        highlight(0, "BlinkCmpKindConstant", { fg = fg })
+        highlight(0, "BlinkCmpKindConstructor", { fg = fg })
+        highlight(0, "BlinkCmpKindEnum", { fg = fg })
+        highlight(0, "BlinkCmpKindEnumMember", { fg = fg })
+        highlight(0, "BlinkCmpKindEvent", { fg = fg })
+        highlight(0, "BlinkCmpKindField", { fg = fg })
+        highlight(0, "BlinkCmpKindFile", { fg = fg })
+        highlight(0, "BlinkCmpKindFolder", { fg = fg })
+        highlight(0, "BlinkCmpKindFunction", { fg = fg })
+        highlight(0, "BlinkCmpKindInterface", { fg = fg })
+        highlight(0, "BlinkCmpKindKeyword", { fg = fg })
+        highlight(0, "BlinkCmpKindMethod", { fg = fg })
+        highlight(0, "BlinkCmpKindModule", { fg = fg })
+        highlight(0, "BlinkCmpKindOperator", { fg = fg })
+        highlight(0, "BlinkCmpKindProperty", { fg = fg })
+        highlight(0, "BlinkCmpKindReference", { fg = fg })
+        highlight(0, "BlinkCmpKindSnippet", { fg = fg })
+        highlight(0, "BlinkCmpKindStruct", { fg = fg })
+        highlight(0, "BlinkCmpKindText", { fg = fg })
+        highlight(0, "BlinkCmpKindTypeParameter", { fg = fg })
+        highlight(0, "BlinkCmpKindUnit", { fg = fg })
+        highlight(0, "BlinkCmpKindValue", { fg = fg })
+        highlight(0, "BlinkCmpKindVariable", { fg = fg })
         highlight(0, "BlinkCmpLabel", { bg = bg, fg = fg })
         highlight(0, "BlinkCmpLabelMatch", { bg = bg, fg = fg })
         highlight(0, "BlinkCmpMenu", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpMenuBorder", { bg = bg, fg = fg })
-        highlight(0, "BlinkCmpMenuSelection", { bg = dark_black, fg=fg })
+        highlight(0, "BlinkCmpMenuBorder", {})
+        highlight(0, "BlinkCmpMenuSelection", { bg = dark_black, fg = fg })
 
         -- -- Bufferline plugin
         -- highlight(0, "BufferLineTabSelected", { fg = blue })
@@ -1041,12 +1041,13 @@ M.style = function()
         -- highlight(0, "SnacksPickerTree", { link = "CustomCelloBlue" })
         -- highlight(0, "SnacksPickerUndoAdded", { link = "diffAdded" })
         -- highlight(0, "SnacksPickerUndoRemoved", { link = "diffRemoved" })
-        --
+
         -- Telescope plugin
-        highlight(0, "TelescopeBorder", { fg = fg, bg = dark_black })
-        highlight(0, "TelescopeMatching", { fg = fg, bg = dark_black })
+        highlight(0, "TelescopeBorder", { link = "FloatBorder" })
+        highlight(0, "TelescopeMatching", { fg = green })
         highlight(0, "TelescopeMultiIcon", { fg = fg, bg = bg })
-        highlight(0, "TelescopeMultiSelection", { fg = fg, bg = bg })
+        highlight(0, "TelescopeSelection", { bg = dark_black })
+        highlight(0, "TelescopeMultiSelection", { link = "TelescopeSelection" })
         highlight(0, "TelescopeNormal", { fg = fg, bg = bg })
         highlight(0, "TelescopePreviewDate", { fg = fg, bg = bg })
         highlight(0, "TelescopePreviewGroup", { fg = fg, bg = bg })
@@ -1062,7 +1063,6 @@ M.style = function()
         highlight(0, "TelescopeResultsSpecialComment", { fg = fg, bg = bg })
         highlight(0, "TelescopeSelectionCaret", { fg = fg, bg = bg })
         highlight(0, "TelescopeTitle", { fg = fg, bg = bg })
-        highlight(0, "TelescopeSelection", { fg = fg, bg = bg })
 
         -----------------------------------------------------------------------
         -- Legacy plugin styling
@@ -1127,31 +1127,30 @@ M.style = function()
         --         highlight(0, "GlyphPalette6", { link = "CustomTurquoise" })
         --         highlight(0, "GlyphPalette7", { link = "CustomWhite" })
         --         highlight(0, "GlyphPalette9", { link = "CustomWatermelon" })
-        --
-        --         -- Misc items
-        --         highlight(0, "bufExplorerHelp", { link = "CustomCadetBlue" })
-        --         highlight(0, "bufExplorerSortBy", { link = "CustomCadetBlue" })
-        --         highlight(0, "CleverFDefaultLabel", { link = "CustomWatermelon" })
-        --         highlight(0, "CtrlPMatch", { link = "CustomOrange" })
-        --         highlight(0, "Directory", { link = "CustomBlue" })
-        --         highlight(0, "netrwClassify", { link = "CustomWatermelon" })
-        --         highlight(0, "netrwDir", { link = "CustomBlue" })
-        --         highlight(0, "netrwExe", { link = "CustomTan" })
-        --         highlight(0, "tagName", { link = "CustomTurquoise" })
-        --         highlight(0, "Cheat40Header", { link = "CustomBlue" })
-        --         highlight(0, "yamlBlockMappingKey", { link = "CustomBlue" })
-        --         highlight(0, "yamlFlowMappingKey", { link = "CustomBlue" })
-        --         if g.nightflyUnderlineMatchParen then
-        --                 highlight(0, "MatchWord", { underline = true, sp = orange })
-        --         else
-        --                 highlight(0, "MatchWord", { link = "CustomOrange" })
-        --         end
-        --         highlight(0, "snipLeadingSpaces", { link = "Normal" })
-        --         highlight(0, "MatchWordCur", { bg = bg })
-        --         highlight(0, "fishInnerVariable", { link = "CustomTurquoise" })
-        --         highlight(0, "fishParameter", { link = "CustomTurquoise" })
-        --         highlight(0, "fishVariable", { link = "CustomTurquoise" })
-        --
+
+        -- Netrw
+        highlight(0, "bufExplorerHelp", {})
+        highlight(0, "bufExplorerSortBy", {})
+        highlight(0, "Directory", { fg = white })
+        highlight(0, "netrwClassify", { fg = light_black })
+        highlight(0, "netrwDir", { fg = blue })
+        highlight(0, "netrwExe", { fg = green })
+        highlight(0, "tagName", { fg = magenta })
+
+        -- highlight(0, "CtrlPMatch", { fg = green })
+
+        -- -- Misc items
+        -- highlight(0, "MatchWord", { link = "CustomOrange" })
+        -- highlight(0, "snipLeadingSpaces", { link = "Normal" })
+        -- highlight(0, "MatchWordCur", { bg = bg })
+        -- highlight(0, "CleverFDefaultLabel", {})
+        -- highlight(0, "fishInnerVariable", { link = "CustomTurquoise" })
+        -- highlight(0, "fishParameter", { link = "CustomTurquoise" })
+        -- highlight(0, "yamlBlockMappingKey", { link = "CustomBlue" })
+        -- highlight(0, "yamlFlowMappingKey", { link = "CustomBlue" })
+        -- highlight(0, "Cheat40Header", { link = "CustomBlue" })
+        -- highlight(0, "fishVariable", { link = "CustomTurquoise" })
+
         --         -- FZF plugin
         --         highlight(0, "FzfBorder", { fg = blue })
         --         highlight(0, "FzfFgPlus", { fg = white_blue })
