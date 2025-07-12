@@ -2,16 +2,16 @@ local g           = vim.g
 local highlight   = vim.api.nvim_set_hl
 
 local none        = "NONE"
-local bg          = '#000000'
-local fg          = '#FFFFFF'
-local red         = '#FFFFFF'
-local green       = '#FFFFFF'
-local yellow      = '#FFFFFF'
-local blue        = '#FFFFFF'
-local magenta     = '#FFFFFF'
-local cyan        = '#FFFFFF'
-local dark_black  = "#FFFFFF"
-local light_black = "#FFFFFF"
+local bg          = '#424751'
+local red         = '#ffa3b6'
+local green       = '#d7ffbd'
+local yellow      = '#ffffbd'
+local blue        = '#accfff'
+local magenta     = '#d6d6ff'
+local cyan        = '#dbeaff'
+local fg          = '#f0f0f0'
+local dark_black  = "#000000"
+local light_black = "#aaaaaa"
 local black       = bg
 local white       = fg
 
@@ -32,32 +32,31 @@ M.palette         = {
         light_black = light_black,
 }
 
-M.style           = function()
-        -------------------------------------------------------------------------
+
+M.style = function()
+        -----------------------------------------------------------------------
         -- Custom styling groups
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
 
-        highlight(0, "CustomWhite", { fg = fg })
-        highlight(0, "CustomLabel", { fg = green })
         highlight(0, "CustomConstant", { fg = red })
-        highlight(0, "CustomFunction", { fg = blue })
-        highlight(0, "CustomType", { fg = cyan })
-        highlight(0, "CustomSpecial", { fg = cyan })
-        highlight(0, "CustomNonText", { fg = cyan })
-        highlight(0, "CustomStatement", { fg = magenta })
-        highlight(0, "CustomKeyword", { fg = magenta })
-        highlight(0, "CustomPreproc", { fg = magenta })
+        highlight(0, "CustomComment", { fg = light_black })
         highlight(0, "CustomException", { fg = magenta })
-        highlight(0, "CustomOperator", { fg = white })
+        highlight(0, "CustomFunction", { fg = blue })
         highlight(0, "CustomIdentifier", { fg = white })
-        highlight(0, "CustomString", { fg = green })
+        highlight(0, "CustomKeyword", { fg = magenta })
+        highlight(0, "CustomLabel", { fg = green })
+        highlight(0, "CustomNonText", { fg = cyan })
+        highlight(0, "CustomOperator", { fg = white })
+        highlight(0, "CustomPreproc", { fg = magenta })
+        highlight(0, "CustomSpecial", { fg = white })
+        highlight(0, "CustomStatement", { fg = magenta })
+        highlight(0, "CustomString", { fg = white })
+        highlight(0, "CustomType", { fg = cyan })
         highlight(0, "CustomVisual", { bg = dark_black })
-        highlight(0, "CustomComment", { fg = light_black })
-        highlight(0, "CustomComment", { fg = light_black })
 
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
         -- Standard styling
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
 
         -- Specify the colors used by the inbuilt terminal
         if g.nightflyTerminalColors then
@@ -79,76 +78,34 @@ M.style           = function()
                 g.terminal_color_15 = fg
         end
 
-        -- Background and text
-        highlight(0, "Normal", { bg = bg, fg = fg })
-
-        -- Color of mode text, -- INSERT --
-        highlight(0, "ModeMsg", { fg = fg })
-
-        -- Comments
-        highlight(0, "Comment", { link = "CustomComment" })
-
-        -- Functions
-        highlight(0, "Function", { link = "CustomFunction" })
-
-        -- Strings
-        highlight(0, "String", { link = "CustomString" })
-
-        -- Booleans
-        highlight(0, "Boolean", { link = "CustomConstant" })
-
-        -- Identifiers
-        highlight(0, "Identifier", { link = "CustomIdentifier" })
-
-        -- Color of titles
-        highlight(0, "Title", { fg = "#FFFFFF" })
-
-        -- const, static
-        highlight(0, "StorageClass", { link = "CustomType" })
-
-        -- void, intptr_t
-        highlight(0, "Type", { link = "CustomType" })
-
-        -- Numbers
-        highlight(0, "Constant", { link = "CustomConstant" })
-
-        -- Character constants
-        highlight(0, "Character", { link = "CustomConstant" })
-
-        -- Exceptions
-        highlight(0, "Exception", { link = "CustomException" })
-
-        -- ifdef/endif
-        highlight(0, "PreProc", { link = "CustomPreproc" })
-
-        -- case in switch statement
-        highlight(0, "Label", { link = "CustomLabel" })
-
-        -- end-of-line '$', end-of-file '~'
-        highlight(0, "NonText", { link = "CustomNonText" })
-
-        -- sizeof
-        highlight(0, "Operator", { link = "CustomOperator" })
-
-        -- for, while
-        highlight(0, "Repeat", { link = "CustomKeyword" })
+        highlight(0, "Normal", { bg = bg, fg = fg })              -- Background and text
+        highlight(0, "ModeMsg", { fg = fg })                      -- Color of mode text, -- INSERT --
+        highlight(0, "Comment", { link = "CustomComment" })       -- Comments
+        highlight(0, "Function", { link = "CustomFunction" })     -- Functions
+        highlight(0, "String", { link = "CustomString" })         -- Strings
+        highlight(0, "Boolean", { link = "CustomConstant" })      -- Booleans
+        highlight(0, "Identifier", { link = "CustomIdentifier" }) -- Identifiers
+        highlight(0, "Title", { fg = "#FFFFFF" })                 -- Color of titles
+        highlight(0, "StorageClass", { link = "CustomType" })     -- const, static
+        highlight(0, "Type", { link = "CustomType" })             -- void, intptr_t
+        highlight(0, "Constant", { link = "CustomConstant" })     -- Numbers
+        highlight(0, "Character", { link = "CustomConstant" })    -- Character constants
+        highlight(0, "Exception", { link = "CustomException" })   -- Exceptions
+        highlight(0, "PreProc", { link = "CustomPreproc" })       -- ifdef/endif
+        highlight(0, "Label", { link = "CustomLabel" })           -- case in switch statement
+        highlight(0, "NonText", { link = "CustomNonText" })       -- end-of-line '$', end-of-file '~'
+        highlight(0, "Operator", { link = "CustomOperator" })     -- sizeof
+        highlight(0, "Repeat", { link = "CustomKeyword" })        -- for, while
 
         -- Search
         highlight(0, "Search", { bg = green, fg = fg })
         highlight(0, "CurSearch", { bg = blue, fg = bg })
         highlight(0, "IncSearch", { bg = yellow, fg = bg })
 
-        -- '\n' sequences
-        highlight(0, "Special", { link = "CustomSpecial" })
-
-        -- if, else
-        highlight(0, "Statement", { link = "CustomStatement" })
-
-        -- struct, union, enum, typedef
-        highlight(0, "Structure", { link = "CustomKeyword" })
-
-        -- `({,.` 
-        highlight(0, "Delimiter", { fg = white })
+        highlight(0, "Special", { link = "CustomSpecial" })     -- '\n' sequences
+        highlight(0, "Statement", { link = "CustomStatement" }) -- if, else
+        highlight(0, "Structure", { link = "CustomKeyword" })   -- struct, union, enum, typedef
+        highlight(0, "Delimiter", { fg = white })               -- `({,.`
 
         -- Status, split and tab lines
         -- todo
@@ -219,9 +176,9 @@ M.style           = function()
         highlight(0, "DiffDelete", { bg = red })
         highlight(0, "DiffText", { bg = cyan })
 
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
         -- Neovim standard styling
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
 
         highlight(0, "Whitespace", { fg = blue })
         highlight(0, "TermCursor", { bg = fg, fg = bg })
@@ -284,7 +241,7 @@ M.style           = function()
         highlight(0, "@module.builtin", { link = "Include" })
         highlight(0, "@none", {})
         highlight(0, "@parameter.builtin", { link = "Identifier" })
-        highlight(0, "@property", { link = "Type" })
+        highlight(0, "@property", { link = "Identifier" })
         highlight(0, "@string.documentation", { link = "Comments" })
         highlight(0, "@string.regexp", { link = "String" })
         highlight(0, "@string.special.path", { link = "String" })
@@ -426,9 +383,9 @@ M.style           = function()
         highlight(0, "LspReferenceWrite", { link = "CustomVisual" })
         highlight(0, "LspSignatureActiveParameter", { bg = blue })
 
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
         -- Legacy language styling
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
 
         -- CSV
         -- highlight(0, "csvCol0", { link = "CustomRed" })
@@ -506,9 +463,9 @@ M.style           = function()
         -- highlight(0, "xmlTag", { link = "CustomGreen" })
         -- highlight(0, "xmlTagName", { link = "CustomBlue" })
 
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
         -- Neovim plugin styling
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
 
         -- -- arrow.nvim
         -- highlight(0, "ArrowCurrentFile", { link = "CustomEmerald" })
@@ -548,38 +505,38 @@ M.style           = function()
         -- highlight(0, "BufferAlternateHINT", { link = "BufferCurrentHINT" })
         --
         -- blink.cmp
-        highlight(0, "BlinkCmpDocCursorLine", { link = "CustomCurrentLine" })
-        highlight(0, "BlinkCmpKind", { link = "CustomWhite" })
-        highlight(0, "BlinkCmpKindClass", { link = "CustomEmerald" })
-        highlight(0, "BlinkCmpKindColor", { link = "CustomTurquoise" })
-        highlight(0, "BlinkCmpKindConstant", { link = "CustomPurple" })
-        highlight(0, "BlinkCmpKindConstructor", { link = "CustomBlue" })
-        highlight(0, "BlinkCmpKindEnum", { link = "CustomViolet" })
-        highlight(0, "BlinkCmpKindEnumMember", { link = "CustomTurquoise" })
-        highlight(0, "BlinkCmpKindEvent", { link = "CustomViolet" })
-        highlight(0, "BlinkCmpKindField", { link = "CustomTurquoise" })
-        highlight(0, "BlinkCmpKindFile", { link = "CustomBlue" })
-        highlight(0, "BlinkCmpKindFolder", { link = "CustomBlue" })
-        highlight(0, "BlinkCmpKindFunction", { link = "CustomBlue" })
-        highlight(0, "BlinkCmpKindInterface", { link = "CustomEmerald" })
-        highlight(0, "BlinkCmpKindKeyword", { link = "CustomViolet" })
-        highlight(0, "BlinkCmpKindMethod", { link = "CustomBlue" })
-        highlight(0, "BlinkCmpKindModule", { link = "CustomEmerald" })
-        highlight(0, "BlinkCmpKindOperator", { link = "CustomViolet" })
-        highlight(0, "BlinkCmpKindProperty", { link = "CustomTurquoise" })
-        highlight(0, "BlinkCmpKindReference", { link = "CustomTurquoise" })
-        highlight(0, "BlinkCmpKindSnippet", { link = "CustomGreen" })
-        highlight(0, "BlinkCmpKindStruct", { link = "CustomEmerald" })
-        highlight(0, "BlinkCmpKindText", { link = "CustomAshBlue" })
-        highlight(0, "BlinkCmpKindTypeParameter", { link = "CustomEmerald" })
-        highlight(0, "BlinkCmpKindUnit", { link = "CustomTurquoise" })
-        highlight(0, "BlinkCmpKindValue", { link = "CustomTurquoise" })
-        highlight(0, "BlinkCmpKindVariable", { link = "CustomTurquoise" })
-        highlight(0, "BlinkCmpLabel", { link = "CustomWhite" })
-        highlight(0, "BlinkCmpLabelMatch", { link = "CmpItemAbbrMatch" })
-        highlight(0, "BlinkCmpMenu", { link = "NormalFloat" })
-        highlight(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
-        highlight(0, "BlinkCmpMenuSelection", { link = "CustomVisual" })
+        highlight(0, "BlinkCmpDocCursorLine", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKind", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindClass", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindColor", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindConstant", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindConstructor", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindEnum", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindEnumMember", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindEvent", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindField", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindFile", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindFolder", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindFunction", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindInterface", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindKeyword", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindMethod", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindModule", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindOperator", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindProperty", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindReference", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindSnippet", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindStruct", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindText", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindTypeParameter", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindUnit", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindValue", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpKindVariable", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpLabel", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpLabelMatch", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpMenu", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpMenuBorder", { bg = bg, fg = fg })
+        highlight(0, "BlinkCmpMenuSelection", { bg = dark_black, fg=fg })
 
         -- -- Bufferline plugin
         -- highlight(0, "BufferLineTabSelected", { fg = blue })
@@ -1086,30 +1043,30 @@ M.style           = function()
         -- highlight(0, "SnacksPickerUndoRemoved", { link = "diffRemoved" })
         --
         -- Telescope plugin
-        highlight(0, "TelescopeBorder", { link = "FloatBorder" })
-        highlight(0, "TelescopeMatching", { link = "CustomOrange" })
-        highlight(0, "TelescopeMultiIcon", { link = "CustomWatermelon" })
-        highlight(0, "TelescopeMultiSelection", { link = "CustomEmerald" })
-        highlight(0, "TelescopeNormal", { link = "CustomAshBlue" })
-        highlight(0, "TelescopePreviewDate", { link = "CustomGreyBlue" })
-        highlight(0, "TelescopePreviewGroup", { link = "CustomGreyBlue" })
-        highlight(0, "TelescopePreviewLink", { link = "CustomTurquoise" })
-        highlight(0, "TelescopePreviewMatch", { link = "CustomVisual" })
-        highlight(0, "TelescopePreviewRead", { link = "CustomOrange" })
-        highlight(0, "TelescopePreviewSize", { link = "CustomEmerald" })
-        highlight(0, "TelescopePreviewUser", { link = "CustomGreyBlue" })
-        highlight(0, "TelescopePromptPrefix", { link = "CustomBlue" })
-        highlight(0, "TelescopeResultsDiffAdd", { link = "CustomGreen" })
-        highlight(0, "TelescopeResultsDiffChange", { link = "CustomRed" })
-        highlight(0, "TelescopeResultsDiffDelete", { link = "CustomWatermelonLine" })
-        highlight(0, "TelescopeResultsSpecialComment", { link = "CustomSteelBlue" })
-        highlight(0, "TelescopeSelectionCaret", { link = "CustomWatermelon" })
-        highlight(0, "TelescopeTitle", { link = "CustomSteelBlue" })
-        highlight(0, "TelescopeSelection", { bg = blue, fg = fg })
+        highlight(0, "TelescopeBorder", { fg = fg, bg = dark_black })
+        highlight(0, "TelescopeMatching", { fg = fg, bg = dark_black })
+        highlight(0, "TelescopeMultiIcon", { fg = fg, bg = bg })
+        highlight(0, "TelescopeMultiSelection", { fg = fg, bg = bg })
+        highlight(0, "TelescopeNormal", { fg = fg, bg = bg })
+        highlight(0, "TelescopePreviewDate", { fg = fg, bg = bg })
+        highlight(0, "TelescopePreviewGroup", { fg = fg, bg = bg })
+        highlight(0, "TelescopePreviewLink", { fg = fg, bg = bg })
+        highlight(0, "TelescopePreviewMatch", { fg = fg, bg = bg })
+        highlight(0, "TelescopePreviewRead", { fg = fg, bg = bg })
+        highlight(0, "TelescopePreviewSize", { fg = fg, bg = bg })
+        highlight(0, "TelescopePreviewUser", { fg = fg, bg = bg })
+        highlight(0, "TelescopePromptPrefix", { fg = fg, bg = bg })
+        highlight(0, "TelescopeResultsDiffAdd", { link = "DiffAdd" })
+        highlight(0, "TelescopeResultsDiffChange", { link = "DiffChange" })
+        highlight(0, "TelescopeResultsDiffDelete", { link = "DiffDelete" })
+        highlight(0, "TelescopeResultsSpecialComment", { fg = fg, bg = bg })
+        highlight(0, "TelescopeSelectionCaret", { fg = fg, bg = bg })
+        highlight(0, "TelescopeTitle", { fg = fg, bg = bg })
+        highlight(0, "TelescopeSelection", { fg = fg, bg = bg })
 
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
         -- Legacy plugin styling
-        -------------------------------------------------------------------------
+        -----------------------------------------------------------------------
 
         --         -- Coc plugin
         --         highlight(0, "CocInlayHint", { link = "LspInlayHint" })
