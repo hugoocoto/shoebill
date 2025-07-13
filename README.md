@@ -3,7 +3,6 @@
 My custom neovim color scheme
 
 ## Showcase
-Images can be outdated.
 ![Image of C code](./images/image_c.png)
 [More images here](./images/images.md)
 
