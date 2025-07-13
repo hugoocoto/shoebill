@@ -7,7 +7,8 @@ Images can be outdated.
 ![Image of C code](./images/image_c.png)
 ![Image of netrw](./images/image_netrw.png)
 ![Image of telescope](./images/image_telescope.png)
-[Image of markdown](./images/image_markdown.png)
+![Image of markdown](./images/image_markdown.png)
+
 
 # Colorscheme
 ![Image of palette](./images/image_palete.png)
