@@ -1,3 +1,13 @@
+--[[
+        Shoebill color scheme
+
+        Author: Hugo Coto Florez
+        Repo: github.com/hugocotoflorez/shoebill
+        License: GPL3
+
+        Todo: vsplit separator don't follow VertSplit and Idk why
+]]
+
 local g           = vim.g
 local highlight   = vim.api.nvim_set_hl
 
@@ -108,16 +118,15 @@ M.style = function()
         highlight(0, "Delimiter", { fg = white })               -- `({,.`
 
         -- Status, split and tab lines
-        -- todo
-        highlight(0, "StatusLine", { bg = bg, fg = fg })
-        highlight(0, "StatusLineNC", { bg = bg, fg = blue })
-        highlight(0, "StatusLineTerm", { bg = bg, fg = fg })
-        highlight(0, "StatusLineTermNC", { bg = bg, fg = blue })
-        highlight(0, "Tabline", { bg = bg, fg = blue })
-        highlight(0, "TablineSel", { bg = bg, fg = blue })
+        highlight(0, "StatusLine", { bg = bg, fg = light_black })
+        highlight(0, "StatusLineNC", { bg = bg, fg = light_black })
+        highlight(0, "StatusLineTerm", { bg = bg, fg = light_black })
+        highlight(0, "StatusLineTermNC", { bg = bg, fg = light_black })
+        highlight(0, "Tabline", { bg = bg, fg = light_black })
+        highlight(0, "TablineSel", { bg = bg, fg = fg })
         highlight(0, "TablineSelSymbol", { bg = bg, fg = green })
-        highlight(0, "TablineFill", { bg = blue, fg = blue })
-        highlight(0, "VertSplit", { bg = none, fg = blue })
+        highlight(0, "TablineFill", { bg = none, fg = none })
+        highlight(0, "VertSplit", { bg = bg, fg = light_black})
 
         -- Visual selection
         highlight(0, "Visual", { link = "CustomVisual" })
@@ -157,7 +166,7 @@ M.style = function()
         highlight(0, "SignColumn", { bg = bg, fg = green })
         highlight(0, "Todo", { bg = blue, fg = yellow })
         highlight(0, "SpecialKey", { bg = bg, fg = blue })
-        highlight(0, "MatchParen", { reverse = true })
+        highlight(0, "MatchParen", { bg = dark_black, fg = fg })
         highlight(0, "Ignore", { fg = red })
         highlight(0, "Underlined", { fg = green })
         highlight(0, "QuickFixLine", { bg = dark_black })
@@ -183,8 +192,8 @@ M.style = function()
         highlight(0, "Whitespace", { fg = blue })
         highlight(0, "TermCursor", { bg = fg, fg = bg })
         highlight(0, "NormalFloat", { bg = bg, fg = blue })
-        highlight(0, "FloatBorder", {})
-        highlight(0, "FloatBorder2", {})
+        highlight(0, "FloatBorder", {fg = yellow, bg = magenta})
+        highlight(0, "FloatBorder2", {fg = yellow, bg = magenta})
         highlight(0, "FloatTitle", { bg = blue, fg = fg })
         highlight(0, "WinBar", { bg = blue, fg = blue })
         highlight(0, "WinBarNC", { bg = blue, fg = blue })
