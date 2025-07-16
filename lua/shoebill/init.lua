@@ -347,7 +347,7 @@ M.style = function()
         highlight(0, "@lsp.typemod.variable.callable", { link = "@function" })
         highlight(0, "@lsp.typemod.variable.defaultLibrary", { link = "@variable.builtin" })
         highlight(0, "@lsp.typemod.variable.injected", { link = "@variable" })
-        highlight(0, "@lsp.typemod.variable.static", { link = "@constant" })
+        highlight(0, "@lsp.typemod.variable.static", { link = "@variable" })
 
         -- Language specific LSP semantic overrides.
         highlight(0, "@lsp.type.decorator.rust", { link = "@function.macro" })
