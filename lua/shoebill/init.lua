@@ -180,7 +180,7 @@ M.style = function()
         highlight(0, "Conceal", { bg = none, fg = blue })
 
         -- nvim -d
-        highlight(0, "DiffAdd", { bg = green })
+        highlight(0, "DiffAdd", { fg = green })
         highlight(0, "DiffChange", { fg = yellow })
         highlight(0, "DiffDelete", { fg = red })
         highlight(0, "DiffText", { fg = cyan })
@@ -200,7 +200,7 @@ M.style = function()
         highlight(0, "WinSeparator", { bg = fg, fg = bg })
 
         -- Neovim check-health
-        highlight(0, "healthSuccess", { link = "DiffAdd" })
+        highlight(0, "healthSuccess", { fg = green })
         highlight(0, "healthHeadingChar", { fg = cyan })
         highlight(0, "helpHeader", { fg = cyan })
 
