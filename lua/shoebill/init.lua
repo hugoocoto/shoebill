@@ -181,9 +181,9 @@ M.style = function()
 
         -- nvim -d
         highlight(0, "DiffAdd", { bg = green })
-        highlight(0, "DiffChange", { bg = yellow })
-        highlight(0, "DiffDelete", { bg = red })
-        highlight(0, "DiffText", { bg = cyan })
+        highlight(0, "DiffChange", { fg = yellow })
+        highlight(0, "DiffDelete", { fg = red })
+        highlight(0, "DiffText", { fg = cyan })
 
         -----------------------------------------------------------------------
         -- Neovim standard styling
