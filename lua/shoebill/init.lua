@@ -195,9 +195,9 @@ M.style = function()
         highlight(0, "FloatBorder", { fg = none, bg = none })
         highlight(0, "FloatBorder2", { fg = none, bg = none })
         highlight(0, "FloatTitle", { bg = blue, fg = fg })
-        highlight(0, "WinBar", { bg = blue, fg = blue })
-        highlight(0, "WinBarNC", { bg = blue, fg = blue })
-        highlight(0, "WinSeparator", { bg = fg, fg = bg })
+        highlight(0, "WinBar", { fg = none, bg = none })
+        highlight(0, "WinBarNC", { fg = none, bg = none })
+        highlight(0, "WinSeparator", { fg = light_black })
 
         -- Neovim check-health
         highlight(0, "healthSuccess", { fg = green })
