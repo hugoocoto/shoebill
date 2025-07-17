@@ -177,7 +177,7 @@ M.style = function()
         highlight(0, "ColorColumn", { bg = dark_black })
 
         -- Conceal color
-        highlight(0, "Conceal", { bg = none, fg = blue })
+        highlight(0, "Conceal", { bg = none, fg = none })
 
         -- nvim -d
         highlight(0, "DiffAdd", { fg = green })
@@ -189,7 +189,7 @@ M.style = function()
         -- Neovim standard styling
         -----------------------------------------------------------------------
 
-        highlight(0, "Whitespace", { fg = blue })
+        highlight(0, "Whitespace", { fg = none })
         highlight(0, "TermCursor", { bg = fg, fg = bg })
         highlight(0, "NormalFloat", { bg = bg, fg = blue })
         highlight(0, "FloatBorder", { fg = none, bg = none })
@@ -383,10 +383,10 @@ M.style = function()
         highlight(0, "DiagnosticFloatingOk", { fg = green })
 
         -- Neovim LSP
-        highlight(0, "LspCodeLens", { fg = blue })
-        highlight(0, "LspCodeLensSeparator", { fg = blue })
+        highlight(0, "LspCodeLens", { fg = magenta })
+        highlight(0, "LspCodeLensSeparator", { fg = magenta })
         highlight(0, "LspInfoBorder", { link = "FloatBorder" })
-        highlight(0, "LspInlayHint", { fg = blue })
+        highlight(0, "LspInlayHint", { fg = magenta })
         highlight(0, "LspReferenceText", { link = "CustomVisual" })
         highlight(0, "LspReferenceRead", { link = "CustomVisual" })
         highlight(0, "LspReferenceWrite", { link = "CustomVisual" })
