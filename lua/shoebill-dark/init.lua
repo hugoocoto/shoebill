@@ -10,7 +10,7 @@ local g           = vim.g
 local highlight   = vim.api.nvim_set_hl
 
 local none        = "NONE"
-local bg          = '#424751'
+local bg          = '#222731'
 local red         = '#ffa3b6'
 local green       = '#d7ffbd'
 local yellow      = '#ffffbd'
@@ -18,8 +18,8 @@ local blue        = '#accfff'
 local magenta     = '#d6d6ff'
 local cyan        = '#dbeaff'
 local fg          = '#f0f0f0'
-local dark_black  = "#222731"
-local light_black = "#aaaaaa"
+local light_black  = "#424751"
+local lightest_black = "#aaaaaa"
 local black       = bg
 local white       = fg
 
@@ -36,8 +36,8 @@ M.palette         = {
         blue        = blue,
         cyan        = cyan,
         magenta     = magenta,
-        dark_black  = dark_black,
-        light_black = light_black,
+        light_black  = light_black,
+        lightest_black = lightest_black,
 }
 
 
@@ -47,7 +47,7 @@ M.style = function()
         -----------------------------------------------------------------------
 
         highlight(0, "CustomConstant", { fg = red })
-        highlight(0, "CustomComment", { fg = light_black })
+        highlight(0, "CustomComment", { fg = lightest_black })
         highlight(0, "CustomException", { fg = magenta })
         highlight(0, "CustomFunction", { fg = blue })
         highlight(0, "CustomIdentifier", { fg = white })
@@ -60,7 +60,7 @@ M.style = function()
         highlight(0, "CustomStatement", { fg = magenta })
         highlight(0, "CustomString", { fg = white })
         highlight(0, "CustomType", { fg = cyan })
-        highlight(0, "CustomVisual", { bg = dark_black })
+        highlight(0, "CustomVisual", { bg = light_black })
 
         -----------------------------------------------------------------------
         -- Standard styling
@@ -68,7 +68,7 @@ M.style = function()
 
         -- Specify the colors used by the inbuilt terminal
         if g.nightflyTerminalColors then
-                g.terminal_color_0 = dark_black
+                g.terminal_color_0 = light_black
                 g.terminal_color_1 = red
                 g.terminal_color_2 = green
                 g.terminal_color_3 = yellow
@@ -76,7 +76,7 @@ M.style = function()
                 g.terminal_color_5 = magenta
                 g.terminal_color_6 = cyan
                 g.terminal_color_7 = fg
-                g.terminal_color_8 = light_black
+                g.terminal_color_8 = lightest_black
                 g.terminal_color_9 = red
                 g.terminal_color_10 = green
                 g.terminal_color_11 = yellow
@@ -116,15 +116,15 @@ M.style = function()
         highlight(0, "Delimiter", { fg = white })               -- `({,.`
 
         -- Status, split and tab lines
-        highlight(0, "StatusLine", { bg = bg, fg = light_black })
-        highlight(0, "StatusLineNC", { bg = bg, fg = light_black })
-        highlight(0, "StatusLineTerm", { bg = bg, fg = light_black })
-        highlight(0, "StatusLineTermNC", { bg = bg, fg = light_black })
-        highlight(0, "Tabline", { bg = bg, fg = light_black })
+        highlight(0, "StatusLine", { bg = bg, fg = lightest_black })
+        highlight(0, "StatusLineNC", { bg = bg, fg = lightest_black })
+        highlight(0, "StatusLineTerm", { bg = bg, fg = lightest_black })
+        highlight(0, "StatusLineTermNC", { bg = bg, fg = lightest_black })
+        highlight(0, "Tabline", { bg = bg, fg = lightest_black })
         highlight(0, "TablineSel", { bg = bg, fg = fg })
         highlight(0, "TablineSelSymbol", { bg = bg, fg = green })
         highlight(0, "TablineFill", { bg = none, fg = none })
-        highlight(0, "VertSplit", { bg = bg, fg = light_black })
+        highlight(0, "VertSplit", { bg = bg, fg = lightest_black })
 
         -- Visual selection
         highlight(0, "Visual", { link = "CustomVisual" })
@@ -138,7 +138,7 @@ M.style = function()
 
         -- Auto-text-completion menu
         highlight(0, "Pmenu", { bg = bg, fg = fg })
-        highlight(0, "PmenuSel", { bg = dark_black, fg = fg })
+        highlight(0, "PmenuSel", { bg = light_black, fg = fg })
         highlight(0, "PmenuSbar", {})
         highlight(0, "PmenuThumb", {})
         highlight(0, "WildMenu", { link = "Pmenu" })
@@ -152,27 +152,27 @@ M.style = function()
         -- Misc
         highlight(0, "Question", { fg = green })
         highlight(0, "MoreMsg", { fg = red })
-        highlight(0, "LineNr", { bg = bg, fg = light_black })
+        highlight(0, "LineNr", { bg = bg, fg = lightest_black })
         highlight(0, "Cursor", { fg = bg, bg = yellow })
         highlight(0, "lCursor", { fg = bg, bg = yellow })
         highlight(0, "CursorLineNr", {})
-        highlight(0, "CursorLine", { bg = dark_black })
+        highlight(0, "CursorLine", { bg = light_black })
         highlight(0, "CursorColumn", { bg = bg })
         highlight(0, "CursorLineSign", {})
-        highlight(0, "Folded", { bg = dark_black, fg = yellow })
-        highlight(0, "FoldColumn", { bg = dark_black, fg = yellow })
+        highlight(0, "Folded", { bg = light_black, fg = yellow })
+        highlight(0, "FoldColumn", { bg = light_black, fg = yellow })
         highlight(0, "SignColumn", { bg = bg, fg = green })
         highlight(0, "Todo", { bg = blue, fg = yellow })
         highlight(0, "SpecialKey", { bg = bg, fg = blue })
-        highlight(0, "MatchParen", { bg = dark_black, fg = fg })
+        highlight(0, "MatchParen", { bg = light_black, fg = fg })
         highlight(0, "Ignore", { fg = red })
         highlight(0, "Underlined", { fg = green })
-        highlight(0, "QuickFixLine", { bg = dark_black })
+        highlight(0, "QuickFixLine", { bg = light_black })
         highlight(0, "qfFileName", {})
         highlight(0, "qfLineNr", {})
 
         -- Color column (after line 80)
-        highlight(0, "ColorColumn", { bg = dark_black })
+        highlight(0, "ColorColumn", { bg = light_black })
 
         -- Conceal color
         highlight(0, "Conceal", { bg = none, fg = none })
@@ -195,7 +195,7 @@ M.style = function()
         highlight(0, "FloatTitle", { bg = blue, fg = fg })
         highlight(0, "WinBar", { fg = none, bg = none })
         highlight(0, "WinBarNC", { fg = none, bg = none })
-        highlight(0, "WinSeparator", { fg = light_black })
+        highlight(0, "WinSeparator", { fg = lightest_black })
 
         -- Neovim check-health
         highlight(0, "healthSuccess", { fg = green })
@@ -543,7 +543,7 @@ M.style = function()
         highlight(0, "BlinkCmpLabelMatch", { bg = bg, fg = fg })
         highlight(0, "BlinkCmpMenu", { bg = bg, fg = fg })
         highlight(0, "BlinkCmpMenuBorder", {})
-        highlight(0, "BlinkCmpMenuSelection", { bg = dark_black, fg = fg })
+        highlight(0, "BlinkCmpMenuSelection", { bg = light_black, fg = fg })
 
         -- -- Bufferline plugin
         -- highlight(0, "BufferLineTabSelected", { fg = blue })
@@ -1051,7 +1051,7 @@ M.style = function()
         highlight(0, "TelescopeBorder", { link = "FloatBorder" })
         highlight(0, "TelescopeMatching", { fg = green })
         highlight(0, "TelescopeMultiIcon", { fg = fg, bg = bg })
-        highlight(0, "TelescopeSelection", { bg = dark_black })
+        highlight(0, "TelescopeSelection", { bg = light_black })
         highlight(0, "TelescopeMultiSelection", { link = "TelescopeSelection" })
         highlight(0, "TelescopeNormal", { fg = fg, bg = bg })
         highlight(0, "TelescopePreviewDate", { fg = fg, bg = bg })
@@ -1137,7 +1137,7 @@ M.style = function()
         highlight(0, "bufExplorerHelp", {})
         highlight(0, "bufExplorerSortBy", {})
         highlight(0, "Directory", { fg = white })
-        highlight(0, "netrwClassify", { fg = light_black })
+        highlight(0, "netrwClassify", { fg = lightest_black })
         highlight(0, "netrwDir", { fg = blue })
         highlight(0, "netrwExe", { fg = green })
         highlight(0, "tagName", { fg = magenta })
