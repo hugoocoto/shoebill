@@ -22,11 +22,11 @@ local set_palette = function(mode)
                         blue        = '#accfff',
                         magenta     = '#d6d6ff',
                         cyan        = '#dbeaff',
-                        fg          = '#bbbbbb',
+                        fg          = '#d0d0d0',
                         dark_black  = "#424751",
                         light_black = "#aaaaaa",
                         black       = '#222731',
-                        white       = '#bbbbbb',
+                        white       = '#d0d0d0',
                 }
         else
                 return {
