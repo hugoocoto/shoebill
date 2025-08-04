@@ -6,42 +6,58 @@
         License: GPL3
 ]]
 
+local M           = {}
+
 local g           = vim.g
 local highlight   = vim.api.nvim_set_hl
 
-local none        = "NONE"
-local bg          = '#424751'
-local red         = '#ffa3b6'
-local green       = '#d7ffbd'
-local yellow      = '#ffffbd'
-local blue        = '#accfff'
-local magenta     = '#d6d6ff'
-local cyan        = '#dbeaff'
-local fg          = '#f0f0f0'
-local dark_black  = "#222731"
-local light_black = "#aaaaaa"
-local black       = bg
-local white       = fg
+local set_palette = function(mode)
+        if mode == "dark" then
+                return {
+                        none        = "NONE",
+                        bg          = '#222731',
+                        red         = '#ffa3b6',
+                        green       = '#d7ffbd',
+                        yellow      = '#ffffbd',
+                        blue        = '#accfff',
+                        magenta     = '#d6d6ff',
+                        cyan        = '#dbeaff',
+                        fg          = '#bbbbbb',
+                        dark_black  = "#424751",
+                        light_black = "#aaaaaa",
+                        black       = '#222731', -- mismo que bg
+                        white       = '#bbbbbb', -- mismo que fg
+                }
+        else
+                -- modo por defecto (por ejemplo "light") si quieres
+                return {
+                        none        = "NONE",
+                        bg          = '#ffffff',
+                        red         = '#ff0000',
+                        green       = '#00ff00',
+                        yellow      = '#ffff00',
+                        blue        = '#0000ff',
+                        magenta     = '#ff00ff',
+                        cyan        = '#00ffff',
+                        fg          = '#000000',
+                        dark_black  = "#aaaaaa",
+                        light_black = "#cccccc",
+                        black       = '#ffffff',
+                        white       = '#000000',
+                }
+        end
+end
 
-local M           = {}
-
-M.palette         = {
-        black       = bg,
-        white       = fg,
-        bg          = bg,
-        fg          = fg,
-        red         = red,
-        yellow      = yellow,
-        green       = green,
-        blue        = blue,
-        cyan        = cyan,
-        magenta     = magenta,
-        dark_black  = dark_black,
-        light_black = light_black,
-}
 
 
-M.style = function()
+M.style = function(mode)
+        set_palette(mode)
+
+        local palette = set_palette(mode)
+        for k, v in pairs(palette) do
+                _G[k] = v
+        end
+
         -----------------------------------------------------------------------
         -- Custom styling groups
         -----------------------------------------------------------------------
