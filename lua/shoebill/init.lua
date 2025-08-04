@@ -49,7 +49,7 @@ end
 
 
 M.style = function(mode)
-        set_palette(mode)
+        M.palette = set_palette(mode)
         local p = M.palette
 
         -----------------------------------------------------------------------
