@@ -540,10 +540,10 @@ M.style = function()
         highlight(0, "BlinkCmpKindValue", { fg = fg })
         highlight(0, "BlinkCmpKindVariable", { fg = fg })
         highlight(0, "BlinkCmpLabel", { fg = fg })
-        highlight(0, "BlinkCmpLabelMatch", { bg = light_black, fg = fg })
+        highlight(0, "BlinkCmpLabelMatch", { fg = fg })
         highlight(0, "BlinkCmpMenu", { bg = dark_black, fg = fg })
         highlight(0, "BlinkCmpMenuBorder", {})
-        highlight(0, "BlinkCmpMenuSelection", { bg = dark_black, fg = fg })
+        highlight(0, "BlinkCmpMenuSelection", { bg = black, fg = fg })
 
         -- -- Bufferline plugin
         -- highlight(0, "BufferLineTabSelected", { fg = blue })
