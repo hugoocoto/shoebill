@@ -32,18 +32,18 @@ local set_palette = function(mode)
                 -- modo por defecto (por ejemplo "light") si quieres
                 return {
                         none        = "NONE",
-                        bg          = '#ffffff',
-                        red         = '#ff0000',
-                        green       = '#00ff00',
-                        yellow      = '#ffff00',
-                        blue        = '#0000ff',
-                        magenta     = '#ff00ff',
-                        cyan        = '#00ffff',
-                        fg          = '#000000',
-                        dark_black  = "#aaaaaa",
-                        light_black = "#cccccc",
-                        black       = '#ffffff',
-                        white       = '#000000',
+                        bg          = '#424751',
+                        red         = '#ffa3b6',
+                        green       = '#d7ffbd',
+                        yellow      = '#ffffbd',
+                        blue        = '#accfff',
+                        magenta     = '#d6d6ff',
+                        cyan        = '#dbeaff',
+                        fg          = '#bbbbbb',
+                        dark_black  = "#424751",
+                        light_black = "#aaaaaa",
+                        black       = '#222731', -- mismo que bg
+                        white       = '#bbbbbb', -- mismo que fg
                 }
         end
 end
