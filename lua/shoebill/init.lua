@@ -512,7 +512,8 @@ M.style = function()
         -- highlight(0, "BufferAlternateHINT", { link = "BufferCurrentHINT" })
         --
         -- blink.cmp
-        highlight(0, "BlinkCmpDocCursorLine", { bg = bg, fg = fg })
+
+        highlight(0, "BlinkCmpDocCursorLine", { bg = black, fg = fg })
         highlight(0, "BlinkCmpKind", { fg = fg })
         highlight(0, "BlinkCmpKindClass", { fg = fg })
         highlight(0, "BlinkCmpKindColor", { fg = fg })
