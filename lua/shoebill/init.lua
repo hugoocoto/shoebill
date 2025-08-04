@@ -25,11 +25,10 @@ local set_palette = function(mode)
                         fg          = '#bbbbbb',
                         dark_black  = "#424751",
                         light_black = "#aaaaaa",
-                        black       = '#222731', -- mismo que bg
-                        white       = '#bbbbbb', -- mismo que fg
+                        black       = '#222731',
+                        white       = '#bbbbbb',
                 }
         else
-                -- modo por defecto (por ejemplo "light") si quieres
                 return {
                         none        = "NONE",
                         bg          = '#424751',
@@ -39,44 +38,39 @@ local set_palette = function(mode)
                         blue        = '#accfff',
                         magenta     = '#d6d6ff',
                         cyan        = '#dbeaff',
-                        fg          = '#bbbbbb',
-                        dark_black  = "#424751",
+                        fg          = '#f0f0f0',
+                        dark_black  = "#222731",
                         light_black = "#aaaaaa",
-                        black       = '#222731', -- mismo que bg
-                        white       = '#bbbbbb', -- mismo que fg
+                        black       = '#424751',
+                        white       = '#f0f0f0',
                 }
         end
 end
 
 
-
 M.style = function(mode)
         set_palette(mode)
-
-        local palette = set_palette(mode)
-        for k, v in pairs(palette) do
-                _G[k] = v
-        end
+        local p = M.palette
 
         -----------------------------------------------------------------------
         -- Custom styling groups
         -----------------------------------------------------------------------
 
-        highlight(0, "CustomConstant", { fg = red })
-        highlight(0, "CustomComment", { fg = light_black })
-        highlight(0, "CustomException", { fg = magenta })
-        highlight(0, "CustomFunction", { fg = blue })
-        highlight(0, "CustomIdentifier", { fg = white })
-        highlight(0, "CustomKeyword", { fg = magenta })
-        highlight(0, "CustomLabel", { fg = white })
-        highlight(0, "CustomNonText", { fg = cyan })
-        highlight(0, "CustomOperator", { fg = white })
-        highlight(0, "CustomPreproc", { fg = magenta })
-        highlight(0, "CustomSpecial", { fg = white })
-        highlight(0, "CustomStatement", { fg = magenta })
-        highlight(0, "CustomString", { fg = white })
-        highlight(0, "CustomType", { fg = cyan })
-        highlight(0, "CustomVisual", { bg = dark_black })
+        highlight(0, "CustomConstant", { fg = p.red })
+        highlight(0, "CustomComment", { fg = p.light_black })
+        highlight(0, "CustomException", { fg = p.magenta })
+        highlight(0, "CustomFunction", { fg = p.blue })
+        highlight(0, "CustomIdentifier", { fg = p.white })
+        highlight(0, "CustomKeyword", { fg = p.magenta })
+        highlight(0, "CustomLabel", { fg = p.white })
+        highlight(0, "CustomNonText", { fg = p.cyan })
+        highlight(0, "CustomOperator", { fg = p.white })
+        highlight(0, "CustomPreproc", { fg = p.magenta })
+        highlight(0, "CustomSpecial", { fg = p.white })
+        highlight(0, "CustomStatement", { fg = p.magenta })
+        highlight(0, "CustomString", { fg = p.white })
+        highlight(0, "CustomType", { fg = p.cyan })
+        highlight(0, "CustomVisual", { bg = p.dark_black })
 
         -----------------------------------------------------------------------
         -- Standard styling
@@ -84,26 +78,26 @@ M.style = function(mode)
 
         -- Specify the colors used by the inbuilt terminal
         if g.nightflyTerminalColors then
-                g.terminal_color_0 = dark_black
-                g.terminal_color_1 = red
-                g.terminal_color_2 = green
-                g.terminal_color_3 = yellow
-                g.terminal_color_4 = blue
-                g.terminal_color_5 = magenta
-                g.terminal_color_6 = cyan
-                g.terminal_color_7 = fg
-                g.terminal_color_8 = light_black
-                g.terminal_color_9 = red
-                g.terminal_color_10 = green
-                g.terminal_color_11 = yellow
-                g.terminal_color_12 = blue
-                g.terminal_color_13 = magenta
-                g.terminal_color_14 = cyan
-                g.terminal_color_15 = fg
+                g.terminal_color_0 = p.dark_black
+                g.terminal_color_1 = p.red
+                g.terminal_color_2 = p.green
+                g.terminal_color_3 = p.yellow
+                g.terminal_color_4 = p.blue
+                g.terminal_color_5 = p.magenta
+                g.terminal_color_6 = p.cyan
+                g.terminal_color_7 = p.fg
+                g.terminal_color_8 = p.light_black
+                g.terminal_color_9 = p.red
+                g.terminal_color_10 = p.green
+                g.terminal_color_11 = p.yellow
+                g.terminal_color_12 = p.blue
+                g.terminal_color_13 = p.magenta
+                g.terminal_color_14 = p.cyan
+                g.terminal_color_15 = p.fg
         end
 
-        highlight(0, "Normal", { bg = bg, fg = fg })              -- Background and text
-        highlight(0, "ModeMsg", { fg = fg })                      -- Color of mode text, -- INSERT --
+        highlight(0, "Normal", { bg = p.bg, fg = p.fg })              -- Background and text
+        highlight(0, "ModeMsg", { fg = p.fg })                      -- Color of mode text, -- INSERT --
         highlight(0, "Comment", { link = "CustomComment" })       -- Comments
         highlight(0, "Function", { link = "CustomFunction" })     -- Functions
         highlight(0, "String", { link = "CustomString" })         -- Strings
@@ -122,25 +116,25 @@ M.style = function(mode)
         highlight(0, "Repeat", { link = "CustomKeyword" })        -- for, while
 
         -- Search
-        highlight(0, "Search", { bg = green, fg = bg })
-        highlight(0, "CurSearch", { bg = yellow, fg = bg })
-        highlight(0, "IncSearch", { bg = yellow, fg = bg })
+        highlight(0, "Search", { bg = p.green, fg = p.bg })
+        highlight(0, "CurSearch", { bg = p.yellow, fg = p.bg })
+        highlight(0, "IncSearch", { bg = p.yellow, fg = p.bg })
 
         highlight(0, "Special", { link = "CustomSpecial" })     -- '\n' sequences
         highlight(0, "Statement", { link = "CustomStatement" }) -- if, else
         highlight(0, "Structure", { link = "CustomKeyword" })   -- struct, union, enum, typedef
-        highlight(0, "Delimiter", { fg = white })               -- `({,.`
+        highlight(0, "Delimiter", { fg = p.white })               -- `({,.`
 
         -- Status, split and tab lines
-        highlight(0, "StatusLine", { bg = bg, fg = light_black })
-        highlight(0, "StatusLineNC", { bg = bg, fg = light_black })
-        highlight(0, "StatusLineTerm", { bg = bg, fg = light_black })
-        highlight(0, "StatusLineTermNC", { bg = bg, fg = light_black })
-        highlight(0, "Tabline", { bg = bg, fg = light_black })
-        highlight(0, "TablineSel", { bg = bg, fg = fg })
-        highlight(0, "TablineSelSymbol", { bg = bg, fg = green })
-        highlight(0, "TablineFill", { bg = none, fg = none })
-        highlight(0, "VertSplit", { bg = bg, fg = light_black })
+        highlight(0, "StatusLine", { bg = p.bg, fg = p.light_black })
+        highlight(0, "StatusLineNC", { bg = p.bg, fg = p.light_black })
+        highlight(0, "StatusLineTerm", { bg = p.bg, fg = p.light_black })
+        highlight(0, "StatusLineTermNC", { bg = p.bg, fg = p.light_black })
+        highlight(0, "Tabline", { bg = p.bg, fg = p.light_black })
+        highlight(0, "TablineSel", { bg = p.bg, fg = p.fg })
+        highlight(0, "TablineSelSymbol", { bg = p.bg, fg = p.green })
+        highlight(0, "TablineFill", { bg = p.none, fg = p.none })
+        highlight(0, "VertSplit", { bg = p.bg, fg = p.light_black })
 
         -- Visual selection
         highlight(0, "Visual", { link = "CustomVisual" })
@@ -148,83 +142,83 @@ M.style = function(mode)
         highlight(0, "VisualNonText", { link = "CustomVisual" })
 
         -- Errors, warnings and whitespace-eol
-        highlight(0, "Error", { bg = bg, fg = red })
-        highlight(0, "ErrorMsg", { bg = bg, fg = red })
-        highlight(0, "WarningMsg", { bg = bg, fg = yellow })
+        highlight(0, "Error", { bg = p.bg, fg = p.red })
+        highlight(0, "ErrorMsg", { bg = p.bg, fg = p.red })
+        highlight(0, "WarningMsg", { bg = p.bg, fg = p.yellow })
 
         -- Auto-text-completion menu
-        highlight(0, "Pmenu", { bg = bg, fg = fg })
-        highlight(0, "PmenuSel", { bg = dark_black, fg = fg })
+        highlight(0, "Pmenu", { bg = p.bg, fg = p.fg })
+        highlight(0, "PmenuSel", { bg = p.dark_black, fg = p.fg })
         highlight(0, "PmenuSbar", {})
         highlight(0, "PmenuThumb", {})
         highlight(0, "WildMenu", { link = "Pmenu" })
 
         -- Spelling errors
-        highlight(0, "SpellBad", { bg = none, underline = true, sp = red })
-        highlight(0, "SpellCap", { bg = none, underline = true, sp = yellow })
-        highlight(0, "SpellRare", { bg = none, underline = true, sp = green })
-        highlight(0, "SpellLocal", { bg = none, underline = true, sp = cyan })
+        highlight(0, "SpellBad", { bg = p.none, underline = true, sp = p.red })
+        highlight(0, "SpellCap", { bg = p.none, underline = true, sp = p.yellow })
+        highlight(0, "SpellRare", { bg = p.none, underline = true, sp = p.green })
+        highlight(0, "SpellLocal", { bg = p.none, underline = true, sp = p.cyan })
 
         -- Misc
-        highlight(0, "Question", { fg = green })
-        highlight(0, "MoreMsg", { fg = red })
-        highlight(0, "LineNr", { bg = bg, fg = light_black })
-        highlight(0, "Cursor", { fg = bg, bg = yellow })
-        highlight(0, "lCursor", { fg = bg, bg = yellow })
+        highlight(0, "Question", { fg = p.green })
+        highlight(0, "MoreMsg", { fg = p.red })
+        highlight(0, "LineNr", { bg = p.bg, fg = p.light_black })
+        highlight(0, "Cursor", { fg = p.bg, bg = p.yellow })
+        highlight(0, "lCursor", { fg = p.bg, bg = p.yellow })
         highlight(0, "CursorLineNr", {})
-        highlight(0, "CursorLine", { bg = dark_black })
-        highlight(0, "CursorColumn", { bg = bg })
+        highlight(0, "CursorLine", { bg = p.dark_black })
+        highlight(0, "CursorColumn", { bg = p.bg })
         highlight(0, "CursorLineSign", {})
-        highlight(0, "Folded", { bg = dark_black, fg = yellow })
-        highlight(0, "FoldColumn", { bg = dark_black, fg = yellow })
-        highlight(0, "SignColumn", { bg = bg, fg = green })
-        highlight(0, "Todo", { bg = blue, fg = yellow })
-        highlight(0, "SpecialKey", { bg = bg, fg = blue })
-        highlight(0, "MatchParen", { bg = dark_black, fg = fg })
-        highlight(0, "Ignore", { fg = red })
-        highlight(0, "Underlined", { fg = green })
-        highlight(0, "QuickFixLine", { bg = dark_black })
+        highlight(0, "Folded", { bg = p.dark_black, fg = p.yellow })
+        highlight(0, "FoldColumn", { bg = p.dark_black, fg = p.yellow })
+        highlight(0, "SignColumn", { bg = p.bg, fg = p.green })
+        highlight(0, "Todo", { bg = p.blue, fg = p.yellow })
+        highlight(0, "SpecialKey", { bg = p.bg, fg = p.blue })
+        highlight(0, "MatchParen", { bg = p.dark_black, fg = p.fg })
+        highlight(0, "Ignore", { fg = p.red })
+        highlight(0, "Underlined", { fg = p.green })
+        highlight(0, "QuickFixLine", { bg = p.dark_black })
         highlight(0, "qfFileName", {})
         highlight(0, "qfLineNr", {})
 
         -- Color column (after line 80)
-        highlight(0, "ColorColumn", { bg = dark_black })
+        highlight(0, "ColorColumn", { bg = p.dark_black })
 
         -- Conceal color
-        highlight(0, "Conceal", { bg = none, fg = none })
+        highlight(0, "Conceal", { bg = p.none, fg = p.none })
 
         -- nvim -d
-        highlight(0, "DiffAdd", { fg = green })
-        highlight(0, "DiffChange", { fg = yellow })
-        highlight(0, "DiffDelete", { fg = red })
-        highlight(0, "DiffText", { fg = cyan })
+        highlight(0, "DiffAdd", { fg = p.green })
+        highlight(0, "DiffChange", { fg = p.yellow })
+        highlight(0, "DiffDelete", { fg = p.red })
+        highlight(0, "DiffText", { fg = p.cyan })
 
         -----------------------------------------------------------------------
         -- Neovim standard styling
         -----------------------------------------------------------------------
 
-        highlight(0, "Whitespace", { fg = none })
-        highlight(0, "TermCursor", { bg = fg, fg = bg })
-        highlight(0, "NormalFloat", { bg = bg, fg = fg })
-        highlight(0, "FloatBorder", { fg = none, bg = none })
-        highlight(0, "FloatBorder2", { fg = none, bg = none })
-        highlight(0, "FloatTitle", { bg = blue, fg = fg })
-        highlight(0, "WinBar", { fg = none, bg = none })
-        highlight(0, "WinBarNC", { fg = none, bg = none })
-        highlight(0, "WinSeparator", { fg = light_black })
+        highlight(0, "Whitespace", { fg = p.none })
+        highlight(0, "TermCursor", { bg = p.fg, fg = p.bg })
+        highlight(0, "NormalFloat", { bg = p.bg, fg = p.fg })
+        highlight(0, "FloatBorder", { fg = p.none, bg = p.none })
+        highlight(0, "FloatBorder2", { fg = p.none, bg = p.none })
+        highlight(0, "FloatTitle", { bg = p.blue, fg = p.fg })
+        highlight(0, "WinBar", { fg = p.none, bg = p.none })
+        highlight(0, "WinBarNC", { fg = p.none, bg = p.none })
+        highlight(0, "WinSeparator", { fg = p.light_black })
 
         -- Neovim check-health
-        highlight(0, "healthSuccess", { fg = green })
-        highlight(0, "healthHeadingChar", { fg = cyan })
-        highlight(0, "helpHeader", { fg = cyan })
+        highlight(0, "healthSuccess", { fg = p.green })
+        highlight(0, "healthHeadingChar", { fg = p.cyan })
+        highlight(0, "helpHeader", { fg = p.cyan })
 
         -- Neovim Tree-sitter
-        highlight(0, "@attribute", { fg = blue })
-        highlight(0, "@comment.error", { fg = red })
-        highlight(0, "@comment.note", { fg = cyan })
-        highlight(0, "@comment.ok", { fg = green })
+        highlight(0, "@attribute", { fg = p.blue })
+        highlight(0, "@comment.error", { fg = p.red })
+        highlight(0, "@comment.note", { fg = p.cyan })
+        highlight(0, "@comment.ok", { fg = p.green })
         highlight(0, "@comment.todo", { link = "Todo" })
-        highlight(0, "@comment.warning", { fg = yellow })
+        highlight(0, "@comment.warning", { fg = p.yellow })
         highlight(0, "@constant", { link = "Constant" })
         highlight(0, "@constant.builtin", { link = "Constant" })
         highlight(0, "@constant.macro", { link = "PreProc" })
@@ -244,19 +238,19 @@ M.style = function(mode)
         highlight(0, "@keyword.operator", { link = "Operator" })
         highlight(0, "@keyword.repeat", { link = "Repeat" })
         highlight(0, "@keyword.storage", { link = "StorageClass" })
-        highlight(0, "@markup.environment", { bg = bg, fg = fg })
-        highlight(0, "@markup.environment.name", { bg = bg, fg = fg })
-        highlight(0, "@markup.heading", { bg = bg, fg = blue })
+        highlight(0, "@markup.environment", { bg = p.bg, fg = p.fg })
+        highlight(0, "@markup.environment.name", { bg = p.bg, fg = p.fg })
+        highlight(0, "@markup.heading", { bg = p.bg, fg = p.blue })
         highlight(0, "@markup.italic", { italic = true })
-        highlight(0, "@markup.link", { bg = bg, fg = fg })
-        highlight(0, "@markup.link.label", { bg = bg, fg = fg })
-        highlight(0, "@markup.link.url", { bg = bg, fg = blue })
-        highlight(0, "@markup.list", { bg = bg, fg = fg })
-        highlight(0, "@markup.list.checked", { bg = bg, fg = fg })
-        highlight(0, "@markup.list.unchecked", { bg = bg, fg = fg })
-        highlight(0, "@markup.math", { bg = bg, fg = fg })
-        highlight(0, "@markup.quote", { bg = bg, fg = fg })
-        highlight(0, "@markup.raw", { bg = bg, fg = fg })
+        highlight(0, "@markup.link", { bg = p.bg, fg = p.fg })
+        highlight(0, "@markup.link.label", { bg = p.bg, fg = p.fg })
+        highlight(0, "@markup.link.url", { bg = p.bg, fg = p.blue })
+        highlight(0, "@markup.list", { bg = p.bg, fg = p.fg })
+        highlight(0, "@markup.list.checked", { bg = p.bg, fg = p.fg })
+        highlight(0, "@markup.list.unchecked", { bg = p.bg, fg = p.fg })
+        highlight(0, "@markup.math", { bg = p.bg, fg = p.fg })
+        highlight(0, "@markup.quote", { bg = p.bg, fg = p.fg })
+        highlight(0, "@markup.raw", { bg = p.bg, fg = p.fg })
         highlight(0, "@markup.strikethrough", { strikethrough = true })
         highlight(0, "@markup.strong", { bold = true })
         highlight(0, "@markup.underline", { underline = true })
@@ -346,7 +340,7 @@ M.style = function(mode)
         highlight(0, "@lsp.type.selfKeyword", { link = "@variable.builtin" })
         highlight(0, "@lsp.type.selfParameter", { link = "@variable.builtin" })
         highlight(0, "@lsp.type.typeAlias", { link = "@type.definition" })
-        highlight(0, "@lsp.type.unresolvedReference", { underline = true, sp = red })
+        highlight(0, "@lsp.type.unresolvedReference", { underline = true, sp = p.red })
         highlight(0, "@lsp.type.variable", {}) -- Use fallback Tree-sitter style for this Semantic Token
         highlight(0, "@lsp.typemod.class.defaultLibrary", { link = "@type" })
         highlight(0, "@lsp.typemod.enum.defaultLibrary", { link = "@type" })
@@ -370,41 +364,41 @@ M.style = function(mode)
         highlight(0, "@lsp.type.variable.dockerfile", { link = "@function" })
 
         -- Neovim Diagnostic
-        highlight(0, "DiagnosticError", { fg = red })
-        highlight(0, "DiagnosticWarn", { fg = yellow })
-        highlight(0, "DiagnosticInfo", { fg = yellow })
-        highlight(0, "DiagnosticHint", { fg = yellow })
-        highlight(0, "DiagnosticOk", { fg = green })
-        highlight(0, "DiagnosticUnderlineError", { underline = true, sp = red })
-        highlight(0, "DiagnosticUnderlineWarn", { underline = true, sp = yellow })
-        highlight(0, "DiagnosticUnderlineInfo", { underline = true, sp = yellow })
-        highlight(0, "DiagnosticUnderlineHint", { underline = true, sp = yellow })
-        highlight(0, "DiagnosticUnderlineOk", { underline = true, sp = green })
-        highlight(0, "DiagnosticVirtualTextError", { fg = red })
-        highlight(0, "DiagnosticVirtualTextWarn", { fg = yellow })
-        highlight(0, "DiagnosticVirtualTextInfo", { fg = yellow })
-        highlight(0, "DiagnosticVirtualTextHint", { fg = yellow })
-        highlight(0, "DiagnosticVirtualTextOk", { fg = green })
-        highlight(0, "DiagnosticSignError", { fg = red })
-        highlight(0, "DiagnosticSignWarn", { fg = yellow })
-        highlight(0, "DiagnosticSignInfo", { fg = yellow })
-        highlight(0, "DiagnosticSignHint", { fg = yellow })
-        highlight(0, "DiagnosticSignOk", { fg = green })
-        highlight(0, "DiagnosticFloatingError", { fg = red })
-        highlight(0, "DiagnosticFloatingWarn", { fg = yellow })
-        highlight(0, "DiagnosticFloatingInfo", { fg = yellow })
-        highlight(0, "DiagnosticFloatingHint", { fg = yellow })
-        highlight(0, "DiagnosticFloatingOk", { fg = green })
+        highlight(0, "DiagnosticError", { fg = p.red })
+        highlight(0, "DiagnosticWarn", { fg = p.yellow })
+        highlight(0, "DiagnosticInfo", { fg = p.yellow })
+        highlight(0, "DiagnosticHint", { fg = p.yellow })
+        highlight(0, "DiagnosticOk", { fg = p.green })
+        highlight(0, "DiagnosticUnderlineError", { underline = true, sp = p.red })
+        highlight(0, "DiagnosticUnderlineWarn", { underline = true, sp = p.yellow })
+        highlight(0, "DiagnosticUnderlineInfo", { underline = true, sp = p.yellow })
+        highlight(0, "DiagnosticUnderlineHint", { underline = true, sp = p.yellow })
+        highlight(0, "DiagnosticUnderlineOk", { underline = true, sp = p.green })
+        highlight(0, "DiagnosticVirtualTextError", { fg = p.red })
+        highlight(0, "DiagnosticVirtualTextWarn", { fg = p.yellow })
+        highlight(0, "DiagnosticVirtualTextInfo", { fg = p.yellow })
+        highlight(0, "DiagnosticVirtualTextHint", { fg = p.yellow })
+        highlight(0, "DiagnosticVirtualTextOk", { fg = p.green })
+        highlight(0, "DiagnosticSignError", { fg = p.red })
+        highlight(0, "DiagnosticSignWarn", { fg = p.yellow })
+        highlight(0, "DiagnosticSignInfo", { fg = p.yellow })
+        highlight(0, "DiagnosticSignHint", { fg = p.yellow })
+        highlight(0, "DiagnosticSignOk", { fg = p.green })
+        highlight(0, "DiagnosticFloatingError", { fg = p.red })
+        highlight(0, "DiagnosticFloatingWarn", { fg = p.yellow })
+        highlight(0, "DiagnosticFloatingInfo", { fg = p.yellow })
+        highlight(0, "DiagnosticFloatingHint", { fg = p.yellow })
+        highlight(0, "DiagnosticFloatingOk", { fg = p.green })
 
         -- Neovim LSP
-        highlight(0, "LspCodeLens", { fg = magenta })
-        highlight(0, "LspCodeLensSeparator", { fg = magenta })
+        highlight(0, "LspCodeLens", { fg = p.magenta })
+        highlight(0, "LspCodeLensSeparator", { fg = p.magenta })
         highlight(0, "LspInfoBorder", { link = "FloatBorder" })
-        highlight(0, "LspInlayHint", { fg = magenta })
+        highlight(0, "LspInlayHint", { fg = p.magenta })
         highlight(0, "LspReferenceText", { link = "CustomVisual" })
         highlight(0, "LspReferenceRead", { link = "CustomVisual" })
         highlight(0, "LspReferenceWrite", { link = "CustomVisual" })
-        highlight(0, "LspSignatureActiveParameter", { bg = blue })
+        highlight(0, "LspSignatureActiveParameter", { bg = p.blue })
 
         -----------------------------------------------------------------------
         -- Legacy language styling
@@ -528,7 +522,7 @@ M.style = function(mode)
         -- highlight(0, "BufferAlternateHINT", { link = "BufferCurrentHINT" })
 
         -- blink.cmp
-        highlight(0, "BlinkCmpKind", { fg = fg })
+        highlight(0, "BlinkCmpKind", { fg = p.fg })
         highlight(0, "BlinkCmpKindClass", {})
         highlight(0, "BlinkCmpKindColor", {})
         highlight(0, "BlinkCmpKindConstant", {})
@@ -555,11 +549,11 @@ M.style = function(mode)
         highlight(0, "BlinkCmpKindValue", {})
         highlight(0, "BlinkCmpKindVariable", {})
         highlight(0, "BlinkCmpMenuBorder", {})
-        highlight(0, "BlinkCmpLabel", { bg = dark_black, fg = light_black })
-        highlight(0, "BlinkCmpLabelMatch", { bg = dark_black, fg = light_black })
-        highlight(0, "BlinkCmpMenu", { bg = dark_black, fg = light_black })
-        highlight(0, "BlinkCmpDocCursorLine", { bg = dark_black, fg = light_black })
-        highlight(0, "BlinkCmpMenuSelection", { bg = dark_black, fg = fg })
+        highlight(0, "BlinkCmpLabel", { bg = p.dark_black, fg = p.light_black })
+        highlight(0, "BlinkCmpLabelMatch", { bg = p.dark_black, fg = p.light_black })
+        highlight(0, "BlinkCmpMenu", { bg = p.dark_black, fg = p.light_black })
+        highlight(0, "BlinkCmpDocCursorLine", { bg = p.dark_black, fg = p.light_black })
+        highlight(0, "BlinkCmpMenuSelection", { bg = p.dark_black, fg = p.fg })
 
         -- -- Bufferline plugin
         -- highlight(0, "BufferLineTabSelected", { fg = blue })
@@ -632,21 +626,21 @@ M.style = function(mode)
         -- highlight(0, "IblWhitespace", { fg = deep_blue, nocombine = true })
         --
         -- lazy.nvim plugin
-        highlight(0, "LazyCommit", { bg = bg, fg = fg })
-        highlight(0, "LazyCommitType", { bg = bg, fg = fg })
-        highlight(0, "LazyDimmed", { bg = bg, fg = fg })
-        highlight(0, "LazyH1", { bg = bg, fg = fg })
-        highlight(0, "LazyProgressDone", { bg = bg, fg = fg })
-        highlight(0, "LazyProgressTodo", { bg = bg, fg = fg })
-        highlight(0, "LazyReasonCmd", { bg = bg, fg = fg })
-        highlight(0, "LazyReasonFt", { bg = bg, fg = fg })
-        highlight(0, "LazyReasonPlugin", { bg = bg, fg = fg })
-        highlight(0, "LazyReasonRuntime", { bg = bg, fg = fg })
-        highlight(0, "LazyReasonSource", { bg = bg, fg = fg })
-        highlight(0, "LazySpecial", { bg = bg, fg = fg })
-        highlight(0, "LazyButton", { bg = bg, fg = fg })
-        highlight(0, "LazyButtonActive", { bg = bg, fg = yellow })
-        highlight(0, "LazyNormal", { bg = bg, fg = fg })
+        highlight(0, "LazyCommit", { bg = p.bg, fg = p.fg })
+        highlight(0, "LazyCommitType", { bg = p.p.bg, fg = p.p.p.p.fg })
+        highlight(0, "LazyDimmed", { bg = p.p.bg, fg = p.p.p.fg })
+        highlight(0, "LazyH1", { bg = p.p.bg, fg = p.p.p.fg })
+        highlight(0, "LazyProgressDone", { bg = p.p.bg, fg = p.p.p.fg })
+        highlight(0, "LazyProgressTodo", { bg = p.p.bg, fg = p.p.p.fg })
+        highlight(0, "LazyReasonCmd", { bg = p.p.bg, fg = p.p.p.fg })
+        highlight(0, "LazyReasonFt", { bg = p.p.bg, fg = p.p.p.fg })
+        highlight(0, "LazyReasonPlugin", { bg = p.p.bg, fg = p.p.p.fg })
+        highlight(0, "LazyReasonRuntime", { bg = p.p.bg, fg = p.p.p.fg })
+        highlight(0, "LazyReasonSource", { bg = p.bg, fg = p.p.p.p.fg })
+        highlight(0, "LazySpecial", { bg = p.bg, fg = p.p.p.p.fg })
+        highlight(0, "LazyButton", { bg = p.bg, fg = p.p.p.p.fg })
+        highlight(0, "LazyButtonActive", { bg = p.bg, fg = p.p.p.p.yellow })
+        highlight(0, "LazyNormal", { bg = p.bg, fg = p.p.p.p.fg })
 
         -- -- linefly plugin
         -- highlight(0, "LineflyNormal", { link = "CustomBlueMode" })
@@ -1065,25 +1059,25 @@ M.style = function(mode)
 
         -- Telescope plugin
         highlight(0, "TelescopeBorder", { link = "FloatBorder" })
-        highlight(0, "TelescopeMatching", { fg = green })
-        highlight(0, "TelescopeMultiIcon", { fg = fg, bg = bg })
-        highlight(0, "TelescopeSelection", { bg = dark_black })
+        highlight(0, "TelescopeMatching", { fg = p.green })
+        highlight(0, "TelescopeMultiIcon", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopeSelection", { bg = p.dark_black })
         highlight(0, "TelescopeMultiSelection", { link = "TelescopeSelection" })
-        highlight(0, "TelescopeNormal", { fg = fg, bg = bg })
-        highlight(0, "TelescopePreviewDate", { fg = fg, bg = bg })
-        highlight(0, "TelescopePreviewGroup", { fg = fg, bg = bg })
-        highlight(0, "TelescopePreviewLink", { fg = fg, bg = bg })
-        highlight(0, "TelescopePreviewMatch", { fg = fg, bg = bg })
-        highlight(0, "TelescopePreviewRead", { fg = fg, bg = bg })
-        highlight(0, "TelescopePreviewSize", { fg = fg, bg = bg })
-        highlight(0, "TelescopePreviewUser", { fg = fg, bg = bg })
-        highlight(0, "TelescopePromptPrefix", { fg = fg, bg = bg })
+        highlight(0, "TelescopeNormal", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopePreviewDate", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopePreviewGroup", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopePreviewLink", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopePreviewMatch", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopePreviewRead", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopePreviewSize", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopePreviewUser", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopePromptPrefix", { fg = p.fg, bg = p.p.p.p.bg })
         highlight(0, "TelescopeResultsDiffAdd", { link = "DiffAdd" })
         highlight(0, "TelescopeResultsDiffChange", { link = "DiffChange" })
         highlight(0, "TelescopeResultsDiffDelete", { link = "DiffDelete" })
-        highlight(0, "TelescopeResultsSpecialComment", { fg = fg, bg = bg })
-        highlight(0, "TelescopeSelectionCaret", { fg = fg, bg = bg })
-        highlight(0, "TelescopeTitle", { fg = fg, bg = bg })
+        highlight(0, "TelescopeResultsSpecialComment", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopeSelectionCaret", { fg = p.fg, bg = p.p.p.p.bg })
+        highlight(0, "TelescopeTitle", { fg = p.fg, bg = p.p.p.p.bg })
 
         -----------------------------------------------------------------------
         -- Legacy plugin styling
@@ -1152,11 +1146,11 @@ M.style = function(mode)
         -- Netrw
         highlight(0, "bufExplorerHelp", {})
         highlight(0, "bufExplorerSortBy", {})
-        highlight(0, "Directory", { fg = white })
-        highlight(0, "netrwClassify", { fg = light_black })
-        highlight(0, "netrwDir", { fg = blue })
-        highlight(0, "netrwExe", { fg = green })
-        highlight(0, "tagName", { fg = magenta })
+        highlight(0, "Directory", { fg = p.white })
+        highlight(0, "netrwClassify", { fg = p.light_black })
+        highlight(0, "netrwDir", { fg = p.blue })
+        highlight(0, "netrwExe", { fg = p.green })
+        highlight(0, "tagName", { fg = p.magenta })
 
         -- highlight(0, "CtrlPMatch", { fg = green })
 
