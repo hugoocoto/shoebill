@@ -5,11 +5,10 @@ if exists('syntax_on')
 endif
 
 " Set colorscheme name.
-let g:colors_name='shoebill-dark'
+let g:colors_name='shoebill'
 
-" Load theme style independently for Neovim and Vim.
 if has('nvim')
-    lua require("shoebill-dark").style()
+    lua require("shoebill").style("dark")
 end
 
 set background=dark " shoebill is a dark theme

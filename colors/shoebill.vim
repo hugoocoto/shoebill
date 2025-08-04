@@ -7,7 +7,6 @@ endif
 " Set colorscheme name.
 let g:colors_name='shoebill'
 
-" Load theme style independently for Neovim and Vim.
 if has('nvim')
     lua require("shoebill").style()
 end
