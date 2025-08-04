@@ -47,6 +47,7 @@ local set_palette = function(mode)
         end
 end
 
+M.palette = set_palette("dark")
 
 M.style = function(mode)
         M.palette = set_palette(mode)
