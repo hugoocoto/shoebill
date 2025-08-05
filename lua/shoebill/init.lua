@@ -47,15 +47,15 @@ local set_palette = function(mode)
         end
 end
 
-M.palette = set_palette("dark")
+M.palette         = set_palette("dark")
 
-M.style = function(mode)
+M.style           = function(mode)
         M.palette = set_palette(mode)
         local p = M.palette
 
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
         -- Custom styling groups
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
 
         highlight(0, "CustomConstant", { fg = p.red })
         highlight(0, "CustomComment", { fg = p.light_black })
@@ -73,9 +73,9 @@ M.style = function(mode)
         highlight(0, "CustomType", { fg = p.cyan })
         highlight(0, "CustomVisual", { bg = p.dark_black })
 
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
         -- Standard styling
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
 
         -- Specify the colors used by the inbuilt terminal
         if g.nightflyTerminalColors then
@@ -97,8 +97,8 @@ M.style = function(mode)
                 g.terminal_color_15 = p.fg
         end
 
-        highlight(0, "Normal", { bg = p.bg, fg = p.fg })              -- Background and text
-        highlight(0, "ModeMsg", { fg = p.fg })                      -- Color of mode text, -- INSERT --
+        highlight(0, "Normal", { bg = p.bg, fg = p.fg })          -- Background and text
+        highlight(0, "ModeMsg", { fg = p.fg })                    -- Color of mode text, -- INSERT
         highlight(0, "Comment", { link = "CustomComment" })       -- Comments
         highlight(0, "Function", { link = "CustomFunction" })     -- Functions
         highlight(0, "String", { link = "CustomString" })         -- Strings
@@ -124,7 +124,7 @@ M.style = function(mode)
         highlight(0, "Special", { link = "CustomSpecial" })     -- '\n' sequences
         highlight(0, "Statement", { link = "CustomStatement" }) -- if, else
         highlight(0, "Structure", { link = "CustomKeyword" })   -- struct, union, enum, typedef
-        highlight(0, "Delimiter", { fg = p.white })               -- `({,.`
+        highlight(0, "Delimiter", { fg = p.white })             -- `({,.`
 
         -- Status, split and tab lines
         highlight(0, "StatusLine", { bg = p.bg, fg = p.light_black })
@@ -194,9 +194,9 @@ M.style = function(mode)
         highlight(0, "DiffDelete", { fg = p.red })
         highlight(0, "DiffText", { fg = p.cyan })
 
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
         -- Neovim standard styling
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
 
         highlight(0, "Whitespace", { fg = p.none })
         highlight(0, "TermCursor", { bg = p.fg, fg = p.bg })
@@ -401,9 +401,9 @@ M.style = function(mode)
         highlight(0, "LspReferenceWrite", { link = "CustomVisual" })
         highlight(0, "LspSignatureActiveParameter", { bg = p.blue })
 
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
         -- Legacy language styling
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
 
         -- CSV
         -- highlight(0, "csvCol0", { link = "CustomRed" })
@@ -415,14 +415,14 @@ M.style = function(mode)
         -- highlight(0, "csvCol6", { link = "CustomPurple" })
         -- highlight(0, "csvCol7", { link = "CustomViolet" })
         -- highlight(0, "csvCol8", { link = "CustomLavender" })
-        --
+
         -- -- Help
         -- highlight(0, "helpCommand", { link = "CustomOrchid" })
         -- highlight(0, "helpExample", { link = "CustomGreen" })
         -- highlight(0, "helpHeadline", { link = "CustomBlue" })
         -- highlight(0, "helpHyperTextEntry", { link = "CustomTurquoise" })
         -- highlight(0, "helpSectionDelim", { link = "CustomBlue" })
-        --
+
         -- -- LaTeX
         -- highlight(0, "texBeginEndName", { link = "CustomEmerald" })
         -- highlight(0, "texCite", { link = "CustomGreen" })
@@ -435,14 +435,14 @@ M.style = function(mode)
         -- highlight(0, "texSection", { link = "CustomLavender" })
         -- highlight(0, "texTypeStyle", { link = "CustomYellow" })
         -- highlight(0, "texZone", { link = "CustomLavender" })
-        --
+
         -- -- Man
         -- highlight(0, "manHeader", { link = "CustomEmerald" })
         -- highlight(0, "manOptionDesc", { link = "CustomOrchid" })
         -- highlight(0, "manReference", { link = "CustomGreen" })
         -- highlight(0, "manSectionHeading", { link = "CustomBlue" })
         -- highlight(0, "manSubHeading", { link = "CustomTurquoise" })
-        --
+
         -- -- Markdown, 'tpope/vim-markdown' plugin
         -- highlight(0, "markdownBold", { link = "CustomPeach" })
         -- highlight(0, "markdownCode", { link = "CustomTan" })
@@ -458,13 +458,13 @@ M.style = function(mode)
         --         highlight(0, "markdownItalic", { link = "CustomOrchid" })
         -- end
         -- highlight(0, "markdownUrl", { link = "CustomPurple" })
-        --
+
         -- -- Markdown, 'plasticboy/vim-markdown' plugin
         -- highlight(0, "mkdDelimiter", { link = "CustomWhite" })
         -- highlight(0, "mkdLineBreak", { link = "NormalNC" })
         -- highlight(0, "mkdListItem", { link = "CustomBlue" })
         -- highlight(0, "mkdURL", { link = "CustomPurple" })
-        --
+
         -- -- Shell
         -- highlight(0, "shAlias", { link = "CustomTurquoise" })
         -- highlight(0, "shCommandSub", { link = "CustomWhite" })
@@ -474,20 +474,20 @@ M.style = function(mode)
         -- highlight(0, "shSetList", { link = "CustomTurquoise" })
         -- highlight(0, "shShellVariables", { link = "CustomTurquoise" })
         -- highlight(0, "shVariable", { link = "CustomTurquoise" })
-        --
+
         -- -- XML
         -- highlight(0, "xmlAttrib", { link = "CustomLime" })
         -- highlight(0, "xmlEndTag", { link = "CustomBlue" })
         -- highlight(0, "xmlTag", { link = "CustomGreen" })
         -- highlight(0, "xmlTagName", { link = "CustomBlue" })
 
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
         -- Neovim plugin styling
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
 
         -- -- arrow.nvim
         -- highlight(0, "ArrowCurrentFile", { link = "CustomEmerald" })
-        --
+
         -- -- Barbar plugin
         -- highlight(0, "BufferCurrent", { link = "CustomWhiteLineActive" })
         -- highlight(0, "BufferCurrentIndex", { link = "CustomWhiteLineActive" })
@@ -559,13 +559,13 @@ M.style = function(mode)
         -- -- Bufferline plugin
         -- highlight(0, "BufferLineTabSelected", { fg = blue })
         -- highlight(0, "BufferLineIndicatorSelected", { fg = blue })
-        --
+
         -- -- Dashboard plugin
         -- highlight(0, "DashboardCenter", { link = "CustomViolet" })
         -- highlight(0, "DashboardFooter", { link = "CustomOrange" })
         -- highlight(0, "DashboardHeader", { link = "CustomBlue" })
         -- highlight(0, "DashboardShortCut", { link = "CustomTurquoise" })
-        --
+
         -- -- fzf-lua
         -- highlight(0, "FzfLuaBorder", { link = "FloatBorder" })
         -- highlight(0, "FzfLuaBufFlagAlt", { link = "CustomTurquoise" })
@@ -584,7 +584,7 @@ M.style = function(mode)
         -- highlight(0, "FzfLuaTabMarker", { link = "CustomTan" })
         -- highlight(0, "FzfLuaTabTitle", { link = "CustomMalibu" })
         -- highlight(0, "FzfLuaTitle", { link = "FloatTitle" })
-        --
+
         -- -- gitsigns.nvim plugin
         -- --   sign column
         -- highlight(0, "GitSignsAdd", { link = "CustomEmerald" })
@@ -613,19 +613,19 @@ M.style = function(mode)
         -- highlight(0, "GitSignsAddPreview", { link = "CustomEmeraldLine" })
         -- highlight(0, "GitSignsDeletePreview", { link = "CustomWatermelonLine" })
         -- highlight(0, "GitSignsDeleteVirtLn", { link = "CustomWatermelonLine" })
-        --
+
         -- -- Hop plugin
         -- highlight(0, "HopCursor", { link = "IncSearch" })
         -- highlight(0, "HopNextKey", { link = "CustomYellow" })
         -- highlight(0, "HopNextKey1", { link = "CustomBlue" })
         -- highlight(0, "HopNextKey2", { link = "CustomWatermelon" })
         -- highlight(0, "HopUnmatched", { link = "CustomGreyBlue" })
-        --
+
         -- -- Indent Blankline plugin
         -- highlight(0, "IblIndent", { fg = deep_blue, nocombine = true })
         -- highlight(0, "IblScope", { fg = bermuda, nocombine = true })
         -- highlight(0, "IblWhitespace", { fg = deep_blue, nocombine = true })
-        --
+
         -- lazy.nvim plugin
         highlight(0, "LazyCommit", { bg = p.bg, fg = p.fg })
         highlight(0, "LazyCommitType", { bg = p.bg, fg = p.fg })
@@ -649,7 +649,7 @@ M.style = function(mode)
         -- highlight(0, "LineflyVisual", { link = "CustomPurpleMode" })
         -- highlight(0, "LineflyCommand", { link = "CustomTanMode" })
         -- highlight(0, "LineflyReplace", { link = "CustomWatermelonMode" })
-        --
+
         -- -- lspsaga.nvim plugin
         -- highlight(0, "TitleString", { link = "CustomBlue" })
         -- highlight(0, "TitleIcon", { link = "CustomBlue" })
@@ -676,7 +676,7 @@ M.style = function(mode)
         -- highlight(0, "CallHierarchyTitle", { link = "CustomWatermelon" })
         -- highlight(0, "SagaShadow", { link = "Normal" })
         -- highlight(0, "OutlineIndent", { link = "CustomPurple" })
-        --
+
         -- -- mason.nvim plugin
         -- highlight(0, "MasonError", { link = "CustomRed" })
         -- highlight(0, "MasonHeader", { link = "CustomBlueMode" })
@@ -692,8 +692,23 @@ M.style = function(mode)
         -- highlight(0, "MasonMuted", { link = "CustomSteelBlue" })
         -- highlight(0, "MasonMutedBlock", { bg = deep_blue, fg = fg })
         -- highlight(0, "MasonMutedBlockBold", { bg = deep_blue, fg = white_blue })
-        --
-        -- -- Mini.nvim plugin
+
+        -- Mini.pick plugin
+        highlight(0, "MiniPickBorder", {})
+        highlight(0, "MiniPickBorderBusy", {})
+        highlight(0, "MiniPickBorderText", {})
+        highlight(0, "MiniPickHeader", {})
+        highlight(0, "MiniPickIconDirectory", {})
+        highlight(0, "MiniPickIconFile", {})
+        highlight(0, "MiniPickMatchCurrent", {bg = p.dark_black})
+        highlight(0, "MiniPickMatchMarked", {bg = p.dark_black})
+        highlight(0, "MiniPickMatchRanges", {fg = p.green})
+        highlight(0, "MiniPickNormal", {link = "Normal"})
+        highlight(0, "MiniPickPreviewLine", {})
+        highlight(0, "MiniPickPreviewRegion", {})
+        highlight(0, "MiniPickPrompt", {})
+
+        -- Mini.nvim plugin
         -- highlight(0, "MiniAnimateNormalFloat", { link = "NormalFloat" })
         -- highlight(0, "MiniClueBorder", { link = "FloatBorder" })
         -- highlight(0, "MiniClueDescGroup", { link = "DiagnosticFloatingWarn" })
@@ -751,19 +766,6 @@ M.style = function(mode)
         -- highlight(0, "MiniNotifyNormal", { link = "NormalFloat" })
         -- highlight(0, "MiniNotifyTitle", { link = "FloatTitle" })
         -- highlight(0, "MiniOperatorsExchangeFrom", { link = "IncSearch" })
-        -- highlight(0, "MiniPickBorder", { link = "FloatBorder" })
-        -- highlight(0, "MiniPickBorderBusy", { link = "DiagnosticFloatingWarn" })
-        -- highlight(0, "MiniPickBorderText", { link = "FloatTitle" })
-        -- highlight(0, "MiniPickHeader", { link = "DiagnosticFloatingHint" })
-        -- highlight(0, "MiniPickIconDirectory", { link = "Directory" })
-        -- highlight(0, "MiniPickIconFile", { link = "MiniPickNormal" })
-        -- highlight(0, "MiniPickMatchCurrent", { link = "CustomCurrentLine" })
-        -- highlight(0, "MiniPickMatchMarked", { link = "DiffAdd" })
-        -- highlight(0, "MiniPickMatchRanges", { link = "DiagnosticFloatingHint" })
-        -- highlight(0, "MiniPickNormal", { link = "NormalFloat" })
-        -- highlight(0, "MiniPickPreviewLine", { link = "CursorLine" })
-        -- highlight(0, "MiniPickPreviewRegion", { link = "IncSearch" })
-        -- highlight(0, "MiniPickPrompt", { link = "DiagnosticFloatingInfo" })
         -- highlight(0, "MiniStarterCurrent", { link = "CustomNoCombine" })
         -- highlight(0, "MiniStarterFooter", { link = "Title" })
         -- highlight(0, "MiniStarterHeader", { link = "CustomViolet" })
@@ -804,7 +806,7 @@ M.style = function(mode)
         -- highlight(0, "MiniStatuslineInactive", { bg = blue, fg = blue })
         -- highlight(0, "MiniTablineHidden", { bg = blue, fg = grey_blue })
         -- highlight(0, "MiniTablineModifiedHidden", { bg = blue, fg = tan })
-        --
+
         -- -- Neo-tree plugin
         -- highlight(0, "NeoTreeCursorLine", { link = "CustomCurrentLine" })
         -- highlight(0, "NeoTreeDimText", { link = "CustomPickleBlue" })
@@ -822,7 +824,7 @@ M.style = function(mode)
         -- highlight(0, "NeoTreeModified", { link = "CustomTan" })
         -- highlight(0, "NeoTreeRootName", { link = "CustomPurple" })
         -- highlight(0, "NeoTreeTitleBar", { bg = blue, fg = fg })
-        --
+
         -- -- Neogit plugin
         -- highlight(0, "NeogitBranch", { link = "CustomBlue" })
         -- highlight(0, "NeogitDiffAddHighlight", { link = "CustomEmeraldLine" })
@@ -831,7 +833,7 @@ M.style = function(mode)
         -- highlight(0, "NeogitHunkHeader", { link = "Pmenu" })
         -- highlight(0, "NeogitHunkHeaderHighlight", { link = "CustomBlueLineActive" })
         -- highlight(0, "NeogitRemote", { link = "CustomPurple" })
-        --
+
         -- -- Noice plugin
         -- highlight(0, "NoiceCmdlinePop", { link = "CustomCadetBlue" })
         -- highlight(0, "NoiceCmdlinePopBorder", { link = "CustomPickleBlue" })
@@ -840,7 +842,7 @@ M.style = function(mode)
         -- highlight(0, "NoiceCompletionItemKindDefault", { link = "CustomTurquoise" })
         -- highlight(0, "NoiceConfirmBorder", { link = "CustomBlue" })
         -- highlight(0, "NoiceFormatTitle", { link = "CustomWatermelon" })
-        --
+
         -- -- nvim-cmplugin
         -- highlight(0, "CmpItemAbbrMatch", { link = "CustomCinnamon" })
         -- highlight(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
@@ -871,7 +873,7 @@ M.style = function(mode)
         -- highlight(0, "CmpItemKindValue", { link = "CustomTurquoise" })
         -- highlight(0, "CmpItemKindVariable", { link = "CustomTurquoise" })
         -- highlight(0, "CmpItemMenu", { link = "CustomSteelBlue" })
-        --
+
         -- -- nvim-dap-ui
         -- highlight(0, "DapUIBreakpointsCurrentLine", { bg = dark_blue, fg = green })
         -- highlight(0, "DapUIBreakpointsDisabledLine", { link = "Comment" })
@@ -898,7 +900,7 @@ M.style = function(mode)
         -- highlight(0, "DapUIWatchesError", { link = "CustomRed" })
         -- highlight(0, "DapUIWatchesValue", { link = "CustomGreen" })
         -- highlight(0, "DapUIWinSelect", { link = "CustomBlue" })
-        --
+
         -- -- nvim-navic plugin
         -- highlight(0, "NavicText", { bg = blue, fg = ash_blue })
         -- highlight(0, "NavicSeparator", { bg = blue, fg = fg })
@@ -927,7 +929,7 @@ M.style = function(mode)
         -- highlight(0, "NavicIconsStruct", { link = "NavicIconsClass" })
         -- highlight(0, "NavicIconsTypeParameter", { link = "NavicIconsEnumMember" })
         -- highlight(0, "NavicIconsVariable", { link = "NavicIconsEnumMember" })
-        --
+
         -- -- nvim-notify plugin
         -- highlight(0, "NotifyERRORBorder", { link = "FloatBorder" })
         -- highlight(0, "NotifyWARNBorder", { link = "FloatBorder" })
@@ -944,17 +946,17 @@ M.style = function(mode)
         -- highlight(0, "NotifyINFOTitle", { link = "CustomBlue" })
         -- highlight(0, "NotifyDEBUGTitle", { link = "CustomGreyBlue" })
         -- highlight(0, "NotifyTRACETitle", { link = "CustomPurple" })
-        --
+
         -- -- nvim-treesitter-context
         -- highlight(0, "TreesitterContext", { bg = blue })
         -- highlight(0, "TreesitterContextBottom", { underline = true, sp = blue })
-        --
+
         -- -- nvim-window-picker plugin
         -- highlight(0, "WindowPickerStatusLine", { link = "WinBar" })
         -- highlight(0, "WindowPickerStatusLineNC", { link = "WinBar" })
         -- highlight(0, "WindowPickerWinBar", { link = "WinBar" })
         -- highlight(0, "WindowPickerWinBarNC", { link = "WinBar" })
-        --
+
         -- -- NvCheatsheet.nvim
         -- highlight(0, "NvChSection", { link = "Pmenu" })
         -- highlight(0, "NvChAsciiHeader", { link = "Directory" })
@@ -968,7 +970,7 @@ M.style = function(mode)
         -- highlight(0, "NvCheatsheetOrange", { bg = orange, fg = dark_blue })
         -- highlight(0, "NvCheatsheetPurple", { link = "CustomPurpleMode" })
         -- highlight(0, "NvCheatsheetMagenta", { bg = violet, fg = dark_blue })
-        --
+
         -- -- NvimTree plugin
         -- highlight(0, "NvimTreeFolderIcon", { link = "CustomGreyBlue" })
         -- highlight(0, "NvimTreeFolderName", { link = "CustomBlue" })
@@ -985,7 +987,7 @@ M.style = function(mode)
         -- end
         -- highlight(0, "NvimTreeOpenedFile", { fg = yellow })
         -- highlight(0, "NvimTreeSymlink", { fg = turquoise })
-        --
+
         -- -- Rainbow Delimiters plugin
         -- highlight(0, "RainbowDelimiterRed", { link = "CustomRed" })
         -- highlight(0, "RainbowDelimiterYellow", { link = "CustomYellow" })
@@ -994,7 +996,7 @@ M.style = function(mode)
         -- highlight(0, "RainbowDelimiterGreen", { link = "CustomGreen" })
         -- highlight(0, "RainbowDelimiterViolet", { link = "CustomViolet" })
         -- highlight(0, "RainbowDelimiterCyan", { link = "CustomTurquoise" })
-        --
+
         -- -- snacks.nvim
         -- --   misc
         -- highlight(0, "SnacksWinBar", { link = "CustomBlue" })
@@ -1080,9 +1082,9 @@ M.style = function(mode)
         highlight(0, "TelescopeSelectionCaret", { fg = p.fg, bg = p.bg })
         highlight(0, "TelescopeTitle", { fg = p.fg, bg = p.bg })
 
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
         -- Legacy plugin styling
-        -----------------------------------------------------------------------
+        ---------------------------------------------------------------------
 
         --         -- Coc plugin
         --         highlight(0, "CocInlayHint", { link = "LspInlayHint" })
@@ -1101,7 +1103,7 @@ M.style = function(mode)
         --         highlight(0, "CocWarningVirtualText", { link = "DiagnosticVirtualTextWarn" })
         --         highlight(0, "CocInfoVirtualText", { link = "DiagnosticVirtualTextInfo" })
         --         highlight(0, "CocHintVirtualText", { link = "DiagnosticVirtualTextHint" })
-        --
+
         --         -- fern.vim plugin
         --         highlight(0, "FernBranchSymbol", { link = "CustomGreyBlue" })
         --         highlight(0, "FernLeafSymbol", { link = "CustomBlue" })
@@ -1111,12 +1113,12 @@ M.style = function(mode)
         --         highlight(0, "FernMarkedText", { link = "CustomWatermelon" })
         --         highlight(0, "FernRootSymbol", { link = "CustomPurple" })
         --         highlight(0, "FernRootText", { link = "CustomPurple" })
-        --
+
         --         -- fern-git-status.vim plugin
         --         highlight(0, "FernGitStatusBracket", { link = "CustomGreyBlue" })
         --         highlight(0, "FernGitStatusIndex", { link = "CustomEmerald" })
         --         highlight(0, "FernGitStatusWorktree", { link = "CustomWatermelon" })
-        --
+
         --         -- Git commits
         --         highlight(0, "gitCommitBranch", { link = "CustomBlue" })
         --         highlight(0, "gitCommitDiscardedFile", { link = "CustomWatermelon" })
@@ -1126,7 +1128,7 @@ M.style = function(mode)
         --         highlight(0, "gitCommitSelectedType", { link = "CustomBlue" })
         --         highlight(0, "gitCommitUntrackedFile", { link = "CustomWatermelon" })
         --         highlight(0, "gitEmail", { link = "CustomBlue" })
-        --
+
         --         -- Git commit diffs
         --         highlight(0, "diffAdded", { link = "CustomGreen" })
         --         highlight(0, "diffChanged", { link = "CustomWatermelon" })
@@ -1134,7 +1136,7 @@ M.style = function(mode)
         --         highlight(0, "diffLine", { link = "CustomBlue" })
         --         highlight(0, "diffRemoved", { link = "CustomRed" })
         --         highlight(0, "diffSubname", { link = "CustomBlue" })
-        --
+
         --         -- Glyph palette
         --         highlight(0, "GlyphPalette1", { link = "CustomWatermelon" })
         --         highlight(0, "GlyphPalette2", { link = "CustomEmerald" })
@@ -1190,8 +1192,7 @@ M.style = function(mode)
         --                 ["gutter"] = { "bg", "Normal" },
         --         }
         -- end
-        --
+
         -- User customization of theme colors.
-        --
 end
 return M
