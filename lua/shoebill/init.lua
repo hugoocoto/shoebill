@@ -1082,6 +1082,41 @@ M.style           = function(mode)
         highlight(0, "TelescopeSelectionCaret", { fg = p.fg, bg = p.bg })
         highlight(0, "TelescopeTitle", { fg = p.fg, bg = p.bg })
 
+        -- Oil plugin
+        highlight(0, "OilHidden", { fg = p.white })                                 -- Hidden entry in an oil buffer
+        highlight(0, "OilDir", { fg = p.blue })                                     -- Directory names in an oil buffer
+        highlight(0, "OilDirHidden", { link = "OilDir" })                           -- Hidden directory names in an oil buffer
+        highlight(0, "OilDirIcon", { link = "OilDir" })                             -- Icon for directories
+        highlight(0, "OilSocket", { fg = p.yellow })                                -- Socket files in an oil buffer
+        highlight(0, "OilSocketHidden", { link = "OilSocket" })                     -- Hidden socket files in an oil buffer
+        highlight(0, "OilLink", { fg = p.cyan })                                    -- Soft links in an oil buffer
+        highlight(0, "OilOrphanLink", { fg = p.red })                               -- Orphaned soft links in an oil buffer
+        highlight(0, "OilLinkHidden", { link = "OilLink" })                         -- Hidden soft links in an oil buffer
+        highlight(0, "OilOrphanLinkHidden", { link = "OilOrphanLink" })             -- Hidden orphaned soft links in an oil buffer
+        highlight(0, "OilLinkTarget", { fg = p.white })                             -- The target of a soft link
+        highlight(0, "OilOrphanLinkTarget", { fg = p.white })                       -- The target of an orphaned soft link
+        highlight(0, "OilLinkTargetHidden", { link = "OilLinkTarget" })             -- The target of a hidden soft link
+        highlight(0, "OilOrphanLinkTargetHidden", { link = "OilOrphanLinkTarget" }) -- The target of an hidden orphaned soft link
+        highlight(0, "OilFile", { fg = p.white })                                   -- Normal files in an oil buffer
+        highlight(0, "OilFileHidden", { link = "OilFile" })                         -- Hidden normal files in an oil buffer
+        highlight(0, "OilCreate", { fg = p.white })                                 -- Create action in the oil preview window
+        highlight(0, "OilDelete", { fg = p.white })                                 -- Delete action in the oil preview window
+        highlight(0, "OilMove", { fg = p.white })                                   -- Move action in the oil preview window
+        highlight(0, "OilCopy", { fg = p.white })                                   -- Copy action in the oil preview window
+        highlight(0, "OilChange", { fg = p.white })                                 -- Change action in the oil preview window
+        highlight(0, "OilRestore", { fg = p.white })                                -- Restore (from the trash) action in the oil preview window
+        highlight(0, "OilPurge", { fg = p.white })                                  -- Purge (Permanently delete a file from trash) action in the oil preview
+        highlight(0, "OilTrash", { fg = p.white })                                  -- Trash (delete a file to trash) action in the oil preview window
+        highlight(0, "OilTrashSourcePath", { fg = p.light_black })                  -- Virtual text that shows the original path of file in the trash
+
+        vim.api.nvim_create_autocmd("FileType", {
+                pattern = "oil",
+                callback = function()
+                        vim.api.nvim_set_hl(0, "CursorLine", { bg = p.dark_black })
+                end,
+        })
+
+
         ---------------------------------------------------------------------
         -- Legacy plugin styling
         ---------------------------------------------------------------------
