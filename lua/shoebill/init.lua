@@ -1109,15 +1109,6 @@ M.style           = function(mode)
         highlight(0, "OilTrash", { fg = p.white })                                  -- Trash (delete a file to trash) action in the oil preview window
         highlight(0, "OilTrashSourcePath", { fg = p.light_black })                  -- Virtual text that shows the original path of file in the trash
 
-        vim.api.nvim_create_autocmd("FileType", {
-                pattern = "oil",
-                callback = function()
-                        vim.wo.cursorline = true
-                        vim.wo.winhl = "CursorLine:OilCursorLine"
-                        vim.api.nvim_set_hl(0, "OilCursorLine", { bg = p.dark_gray }) -- cambia `p.dark_gray` por el color que quieras
-                end,
-        })
-
         ---------------------------------------------------------------------
         -- Legacy plugin styling
         ---------------------------------------------------------------------
