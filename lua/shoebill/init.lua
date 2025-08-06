@@ -25,8 +25,6 @@ local set_palette = function(mode)
                         fg          = '#d0d0d0',
                         dark_black  = "#424751",
                         light_black = "#aaaaaa",
-                        black       = '#222731',
-                        white       = '#d0d0d0',
                 }
         elseif mode == "gruv" then
                 return {
@@ -39,11 +37,22 @@ local set_palette = function(mode)
                         magenta     = '#d3869b',
                         cyan        = '#8ec07c',
                         fg          = '#ebdbb2',
-
                         dark_black  = '#1d2021',
                         light_black = '#928374',
-                        black       = '#282828',
-                        white       = '#ebdbb2',
+                }
+        elseif mode == "forest" then
+                return {
+                        none        = "NONE",
+                        bg          = '#272e33',
+                        red         = '#e67e80',
+                        green       = '#a7c080',
+                        yellow      = '#dbbc7f',
+                        blue        = '#7fbbb3',
+                        magenta     = '#d699b6',
+                        cyan        = '#83c092',
+                        fg          = '#d3c6aa',
+                        dark_black  = '#1e2326',
+                        light_black = '#859289',
                 }
         else
                 return {
@@ -58,8 +67,6 @@ local set_palette = function(mode)
                         fg          = '#f0f0f0',
                         dark_black  = "#222731",
                         light_black = "#aaaaaa",
-                        black       = '#424751',
-                        white       = '#f0f0f0',
                 }
         end
 end
@@ -78,15 +85,15 @@ M.style           = function(mode)
         highlight(0, "CustomComment", { fg = p.light_black })
         highlight(0, "CustomException", { fg = p.magenta })
         highlight(0, "CustomFunction", { fg = p.blue })
-        highlight(0, "CustomIdentifier", { fg = p.white })
+        highlight(0, "CustomIdentifier", { fg = p.fg })
         highlight(0, "CustomKeyword", { fg = p.magenta })
-        highlight(0, "CustomLabel", { fg = p.white })
+        highlight(0, "CustomLabel", { fg = p.fg })
         highlight(0, "CustomNonText", { fg = p.cyan })
-        highlight(0, "CustomOperator", { fg = p.white })
+        highlight(0, "CustomOperator", { fg = p.fg })
         highlight(0, "CustomPreproc", { fg = p.magenta })
-        highlight(0, "CustomSpecial", { fg = p.white })
+        highlight(0, "CustomSpecial", { fg = p.fg })
         highlight(0, "CustomStatement", { fg = p.magenta })
-        highlight(0, "CustomString", { fg = p.white })
+        highlight(0, "CustomString", { fg = p.fg })
         highlight(0, "CustomType", { fg = p.cyan })
         highlight(0, "CustomVisual", { bg = p.dark_black })
 
@@ -141,7 +148,7 @@ M.style           = function(mode)
         highlight(0, "Special", { link = "CustomSpecial" })     -- '\n' sequences
         highlight(0, "Statement", { link = "CustomStatement" }) -- if, else
         highlight(0, "Structure", { link = "CustomKeyword" })   -- struct, union, enum, typedef
-        highlight(0, "Delimiter", { fg = p.white })             -- `({,.`
+        highlight(0, "Delimiter", { fg = p.fg })             -- `({,.`
 
         -- Status, split and tab lines
         highlight(0, "StatusLine", { bg = p.bg, fg = p.light_black })
@@ -1100,7 +1107,7 @@ M.style           = function(mode)
         highlight(0, "TelescopeTitle", { fg = p.fg, bg = p.bg })
 
         -- Oil plugin
-        highlight(0, "OilHidden", { fg = p.white })                                 -- Hidden entry in an oil buffer
+        highlight(0, "OilHidden", { fg = p.fg })                                 -- Hidden entry in an oil buffer
         highlight(0, "OilDir", { fg = p.blue })                                     -- Directory names in an oil buffer
         highlight(0, "OilDirHidden", { link = "OilDir" })                           -- Hidden directory names in an oil buffer
         highlight(0, "OilDirIcon", { link = "OilDir" })                             -- Icon for directories
@@ -1110,20 +1117,20 @@ M.style           = function(mode)
         highlight(0, "OilOrphanLink", { fg = p.red })                               -- Orphaned soft links in an oil buffer
         highlight(0, "OilLinkHidden", { link = "OilLink" })                         -- Hidden soft links in an oil buffer
         highlight(0, "OilOrphanLinkHidden", { link = "OilOrphanLink" })             -- Hidden orphaned soft links in an oil buffer
-        highlight(0, "OilLinkTarget", { fg = p.white })                             -- The target of a soft link
-        highlight(0, "OilOrphanLinkTarget", { fg = p.white })                       -- The target of an orphaned soft link
+        highlight(0, "OilLinkTarget", { fg = p.fg })                             -- The target of a soft link
+        highlight(0, "OilOrphanLinkTarget", { fg = p.fg })                       -- The target of an orphaned soft link
         highlight(0, "OilLinkTargetHidden", { link = "OilLinkTarget" })             -- The target of a hidden soft link
         highlight(0, "OilOrphanLinkTargetHidden", { link = "OilOrphanLinkTarget" }) -- The target of an hidden orphaned soft link
-        highlight(0, "OilFile", { fg = p.white })                                   -- Normal files in an oil buffer
+        highlight(0, "OilFile", { fg = p.fg })                                   -- Normal files in an oil buffer
         highlight(0, "OilFileHidden", { link = "OilFile" })                         -- Hidden normal files in an oil buffer
-        highlight(0, "OilCreate", { fg = p.white })                                 -- Create action in the oil preview window
-        highlight(0, "OilDelete", { fg = p.white })                                 -- Delete action in the oil preview window
-        highlight(0, "OilMove", { fg = p.white })                                   -- Move action in the oil preview window
-        highlight(0, "OilCopy", { fg = p.white })                                   -- Copy action in the oil preview window
-        highlight(0, "OilChange", { fg = p.white })                                 -- Change action in the oil preview window
-        highlight(0, "OilRestore", { fg = p.white })                                -- Restore (from the trash) action in the oil preview window
-        highlight(0, "OilPurge", { fg = p.white })                                  -- Purge (Permanently delete a file from trash) action in the oil preview
-        highlight(0, "OilTrash", { fg = p.white })                                  -- Trash (delete a file to trash) action in the oil preview window
+        highlight(0, "OilCreate", { fg = p.fg })                                 -- Create action in the oil preview window
+        highlight(0, "OilDelete", { fg = p.fg })                                 -- Delete action in the oil preview window
+        highlight(0, "OilMove", { fg = p.fg })                                   -- Move action in the oil preview window
+        highlight(0, "OilCopy", { fg = p.fg })                                   -- Copy action in the oil preview window
+        highlight(0, "OilChange", { fg = p.fg })                                 -- Change action in the oil preview window
+        highlight(0, "OilRestore", { fg = p.fg })                                -- Restore (from the trash) action in the oil preview window
+        highlight(0, "OilPurge", { fg = p.fg })                                  -- Purge (Permanently delete a file from trash) action in the oil preview
+        highlight(0, "OilTrash", { fg = p.fg })                                  -- Trash (delete a file to trash) action in the oil preview window
         highlight(0, "OilTrashSourcePath", { fg = p.light_black })                  -- Virtual text that shows the original path of file in the trash
 
         ---------------------------------------------------------------------
@@ -1193,7 +1200,7 @@ M.style           = function(mode)
         -- Netrw
         highlight(0, "bufExplorerHelp", {})
         highlight(0, "bufExplorerSortBy", {})
-        highlight(0, "Directory", { fg = p.white })
+        highlight(0, "Directory", { fg = p.fg })
         highlight(0, "netrwClassify", { fg = p.light_black })
         highlight(0, "netrwDir", { fg = p.blue })
         highlight(0, "netrwExe", { fg = p.green })
