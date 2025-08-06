@@ -50,7 +50,7 @@ local set_palette = function(mode)
                         blue        = '#7fbbb3',
                         magenta     = '#d699b6',
                         cyan        = '#83c092',
-                        fg          = '#bbccbb',
+                        fg          = '#bbc0b0',
                         dark_black  = '#1e2326',
                         light_black = '#859289',
                 }
