@@ -31,18 +31,19 @@ local set_palette = function(mode)
         elseif mode == "gruv" then
                 return {
                         none        = "NONE",
-                        bg          = '#282828',
-                        red         = '#fb4934',
-                        green       = '#b8bb26',
-                        yellow      = '#fabd26',
-                        blue        = '#83a598',
-                        magenta     = '#d3869b',
-                        cyan        = '#8ec07c',
-                        fg          = '#ebdbb2',
-                        dark_black  = "#1d2021",
-                        light_black = "#928374",
-                        black       = '#282828',
-                        white       = '#ebdbb2',
+                        bg          = '#282828',                 -- bg
+                        red         = '#cc241d',                 -- red
+                        green       = '#98971a',                 -- green
+                        yellow      = '#d79921',                 -- yellow
+                        blue        = '#458588',                 -- blue
+                        magenta     = '#b16286',                 -- purple
+                        cyan        = '#689d6a',                 -- aqua
+                        fg          = '#ebdbb2',                 -- fg
+
+                        dark_black  = '#1d2021',                 -- bg0_h
+                        light_black = '#3c3836',                 -- bg1
+                        black       = '#282828',                 -- bg
+                        white       = '#fbf1c7',                 -- fg0
                 }
         else
                 return {
