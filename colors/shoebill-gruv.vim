@@ -5,10 +5,10 @@ if exists('syntax_on')
 endif
 
 " Set colorscheme name.
-let g:colors_name='shoebill-dark'
+let g:colors_name='shoebill-gruv'
 
 if has('nvim')
-    lua require("shoebill").style("dark")
+    lua require("shoebill").style("gruv")
 end
 
 set background=dark " shoebill is a dark theme

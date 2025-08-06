@@ -1,6 +1,8 @@
 # Shoebill color scheme
 
-My custom neovim color scheme
+My custom neovim color scheme. Shoebill is not just a color scheme, 
+but a minimalist association of colors with different components, 
+independently from the color tone. 
 
 ## Showcase
 ![Image of C code](./images/image_c.png)
