@@ -38,12 +38,12 @@ local set_palette = function(mode)
                         blue        = '#458588',                 -- blue
                         magenta     = '#b16286',                 -- purple
                         cyan        = '#689d6a',                 -- aqua
-                        fg          = '#ebdbb2',                 -- fg
+                        fg          = '#928374',                 -- fg
 
                         dark_black  = '#1d2021',                 -- bg0_h
-                        light_black = '#3c3836',                 -- bg1
+                        light_black = '#a89984',                 -- bg1
                         black       = '#282828',                 -- bg
-                        white       = '#fbf1c7',                 -- fg0
+                        white       = '#928374',                 -- fg0
                 }
         else
                 return {
